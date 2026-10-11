@@ -1,1 +1,7 @@
 main
+bin
+build/_deps
+build/CMakeFiles
+build/cmake_install.cmake
+build/CMakeCache.txt
+build/Makefile
