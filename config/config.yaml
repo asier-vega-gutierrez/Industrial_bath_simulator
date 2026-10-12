@@ -1,0 +1,29 @@
+
+experimentos:
+
+  - nombre: "prueba"
+    tiempo_simulacion: 60.0
+
+
+modelo:
+  entidades:
+    
+  - id: 0
+    tipo: "entrada"
+    generador: "LINEAR_CONGRUENTIAL_ENGINE"
+
+  - id: 1
+    tipo: "entrada"
+    generador: "LINEAR_CONGRUENTIAL_ENGINE"
+
+  - id: 2
+    tipo: "maquina"
+    trigger: [1]
+
+  - id: 3
+    tipo: "maquina"
+    trigger: [2]
+  
+  - id: 4
+    tipo: "maquina"
+    trigger: [2, 3]
