@@ -5,15 +5,16 @@
 
 class Evento {
     private:
-        int tipo; // tipo de evento
+        // El origen del evento es el id de la entidad que lo provoca heredado
         int origen; // origen de evento
+        int tipo; // tipo de evento
         double tiempo; // instante en el que ocurre
 
     public:
         Evento() = default;
-        Evento(int tipo, int origen, double tiempo){
-            this->tipo = tipo;
+        Evento(int origen, int tipo, double tiempo){
             this->origen = origen;
+            this->tipo = tipo;
             this->tiempo = tiempo;
         }
         int get_tipo(){return this->tipo;}
