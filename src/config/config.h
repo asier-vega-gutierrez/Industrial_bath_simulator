@@ -10,6 +10,9 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+    //https://github.com/jbeder/yaml-cpp
+    //https://github.com/jbeder/yaml-cpp/blob/master/docs/Tutorial.md
+
 class Config {
     private:
         YAML::Node config;
@@ -44,7 +47,7 @@ class Config {
                     } else if(!generador_str.compare("MERSENNE_TWISTER_ENGINE")){
                         generador = MERSENNE_TWISTER_ENGINE;
                     }
-                    Entrada entrada = Entrada(elm["id"].as<int>(), generador);
+                    Entrada entrada = Entrada(elm["id"].as<int>(), generador, elm["lambda"].as<double>());
                     lista.push_back(entrada);
                 }
             }

@@ -12,19 +12,21 @@ modelo:
   - id: 0
     tipo: "entrada"
     generador: "LINEAR_CONGRUENTIAL_ENGINE"
+    lambda: 0.2
 
   - id: 1
     tipo: "entrada"
     generador: "LINEAR_CONGRUENTIAL_ENGINE"
+    lambda: 0.1
 
   - id: 2
     tipo: "maquina"
-    trigger: [1]
+    trigger: [0]
 
   - id: 3
     tipo: "maquina"
-    trigger: [2]
+    trigger: [1]
   
   - id: 4
     tipo: "maquina"
-    trigger: [2, 3]
+    trigger: [0, 1]
