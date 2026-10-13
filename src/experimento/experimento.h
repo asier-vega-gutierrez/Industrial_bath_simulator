@@ -16,6 +16,7 @@ class Experimento {
             this->tiempo_simulacion = tiempo_simulacion;
         }
 
+        std::string get_nombre(){return this->nombre;}
         int get_tiempo_simulacion(){return this->tiempo_simulacion;}
 
 };
