@@ -4,6 +4,7 @@
 #include "./generador/generador.h"
 #include "./entidades/maquina.h"
 #include "./config/config.h"
+#include "./experimento/experimento.h"
 
 #include <iostream>
 #include <random>
@@ -67,9 +68,10 @@ int main() {
     //https://github.com/jbeder/yaml-cpp/blob/master/docs/Tutorial.md
 
     Config config = Config("../config/config.yaml");
-    // std::vector<Maquina> lista_entradas = config.get_entradas();
+    std::vector<Entrada> lista_entradas = config.get_entradas();
     std::vector<Maquina> lista_maquinas = config.get_maquinas();
-    // printf("%d \n", lista_maquinas[2].get_id());
+    std::vector<Experimento> lista_experimentos = config.get_experimentos();
+    printf("%d \n", lista_experimentos[0].get_tiempo_simulacion());
     
     
     // Leer el modelo
@@ -80,17 +82,6 @@ int main() {
     //entrada ids = 0, 1
     int entrada = 2; //numero de entradas
     //frecuencia de cada entrada
-
-
-    //procesos
-    // const int num_procesos = 3;
-    // int arr_1[1] = {0};
-    // int arr_2[1] = {1};
-    // int arr_3[2] = {2,3};
-    // Proceso proceso_1 = Proceso(2, array_to_vector(arr_1, sizeof(arr_1)));
-    // Proceso proceso_2 = Proceso(3, array_to_vector(arr_2, sizeof(arr_2)));
-    // Proceso proceso_3 = Proceso(4, array_to_vector(arr_3, sizeof(arr_3)));
-    // std::array<Proceso, num_procesos> lista_entidades = {proceso_1, proceso_2, proceso_3};
 
     
 

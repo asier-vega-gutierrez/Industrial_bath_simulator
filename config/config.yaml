@@ -1,5 +1,6 @@
 
-experimentos:
+simulacion:
+  experimentos:
 
   - nombre: "prueba"
     tiempo_simulacion: 60.0

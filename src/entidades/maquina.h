@@ -1,8 +1,8 @@
 
 #include <vector>
 
-#ifndef PROCESO_H
-#define PROCESO_H
+#ifndef MAQUINA_H
+#define MAQUINA_H
 
 class Maquina {
 
