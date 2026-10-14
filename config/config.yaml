@@ -22,11 +22,14 @@ modelo:
   - id: 2
     tipo: "maquina"
     trigger: [0]
+    tiempo: 10.0
 
   - id: 3
     tipo: "maquina"
     trigger: [1]
+    tiempo: 5.0
   
   - id: 4
     tipo: "maquina"
     trigger: [0, 1]
+    tiempo: 6.0

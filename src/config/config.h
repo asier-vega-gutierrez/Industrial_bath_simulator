@@ -59,7 +59,7 @@ class Config {
             const auto& elemento = config["modelo"]["entidades"];
             for (const auto& elm : elemento) {
                 if (elm["tipo"].as<std::string>() == "maquina"){
-                    Maquina maq = Maquina(elm["id"].as<int>(), elm["trigger"].as<std::vector<int>>());
+                    Maquina maq = Maquina(elm["id"].as<int>(), elm["trigger"].as<std::vector<int>>(), elm["tiempo"].as<double>());
                     lista.push_back(maq);
                 }
             }
