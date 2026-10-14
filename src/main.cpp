@@ -12,7 +12,7 @@
 #include <array>
 
 
-void generar_eventos_entrada(ColaEventos& lista, int generador, int origen, double tiempo_simulacion, double frecuencia_llegada) {
+void generar_eventos_entrada(ColaEventos& lista, int generador, int origen, double frecuencia_llegada, double tiempo_simulacion) {
 
     Generador gen = Generador(generador);
 
@@ -30,7 +30,9 @@ void generar_eventos_entrada(ColaEventos& lista, int generador, int origen, doub
 }
 
 
-void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion){
+
+
+void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Maquina> lista_maquinas){
 
     double tiempo_actual = 0.0;
 
@@ -38,10 +40,14 @@ void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion){
     while (tiempo_simulacion > tiempo_actual){
         Evento evento_actual = lista_eventos.top();
         lista_eventos.pop();
-        //un evento desencadena una proceso con dependencia en ese evento
 
+        // Se actualiza el estado de las etidades tipo maquina
+        for (Maquina maquina : lista_maquinas){
+            maquina.actualizar_estado(evento_actual.get_origen(), lista_eventos, tiempo_actual);
+        }
 
-        printf("--- evento procesado \n");
+        print_cola_eventos(lista_eventos);
+        printf("--- Evento procesado \n");
 
 
         // Rutina de finalizado de simulacion en caso de que se acaben los eventos
@@ -51,59 +57,30 @@ void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion){
         }else{
             tiempo_actual = tiempo_simulacion;
         }
-
     }
 
 }
 
-std::vector<int> array_to_vector(const int* arr, size_t size) {
-    return std::vector<int>(arr, arr + size);
-}
 
 int main() {
 
 
-    // Configuración del yaml
-    //https://github.com/jbeder/yaml-cpp
-    //https://github.com/jbeder/yaml-cpp/blob/master/docs/Tutorial.md
-
+    // Cargar la configuracion
     Config config = Config("../config/config.yaml");
     std::vector<Entrada> lista_entradas = config.get_entradas();
     std::vector<Maquina> lista_maquinas = config.get_maquinas();
-    std::vector<Experimento> lista_experimentos = config.get_experimentos();
-    printf("%d \n", lista_experimentos[0].get_tiempo_simulacion());
-    
-    
-    // Leer el modelo
-    
-
-    //general
-    double tiempo_simulacion = 60.0; // 60 minutos
-    //entrada ids = 0, 1
-    int entrada = 2; //numero de entradas
-    //frecuencia de cada entrada
-
+    std::vector<Experimento> lista_experimentos = config.get_experimentos(); //TODO lo ultimo en implementar, cada experimiento tiene una cola de eventos???
     
 
     // Declaración de la cola de prioridad de eventos
     ColaEventos lista_eventos;
-    generar_eventos_entrada(lista_eventos, LINEAR_CONGRUENTIAL_ENGINE, 1, tiempo_simulacion, 0.2);
-    generar_eventos_entrada(lista_eventos, LINEAR_CONGRUENTIAL_ENGINE, 2, tiempo_simulacion, 0.1);
-
-
-
-    simulacion(lista_eventos, tiempo_simulacion);
-
-
-
-    while (!lista_eventos.empty()) {
-        Evento actual = lista_eventos.top();
-        lista_eventos.pop();                 
-
-        printf("%d %d %.2f \n", actual.get_tipo(), actual.get_origen(), actual.get_tiempo());
+    // Generacion de todos los enventos externo
+    for(Entrada entrada : lista_entradas){
+        generar_eventos_entrada(lista_eventos, entrada.get_generador(), entrada.get_id(), entrada.get_lambda(), lista_experimentos[0].get_tiempo_simulacion());
     }
 
 
+    simulacion(lista_eventos, lista_experimentos[0].get_tiempo_simulacion(), lista_maquinas);
 
 
     return 0;

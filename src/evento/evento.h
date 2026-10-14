@@ -6,7 +6,7 @@
 class Evento {
     private:
         // El origen del evento es el id de la entidad que lo provoca heredado
-        int origen; // origen de evento
+        int origen; // origen de evento (id de la entidad que lo genera)
         int tipo; // tipo de evento
         double tiempo; // instante en el que ocurre
 
