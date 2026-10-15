@@ -38,16 +38,29 @@ void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion, std::vecto
 
     // La simulacion peude terminar si se excede el tiempo de simulacion
     while (tiempo_simulacion > tiempo_actual){
+
+        printf("---------------------------------\n");
+        printf("--- Nueva itieracion de simulacion \n");
+        print_cola_eventos(lista_eventos);
+
         Evento evento_actual = lista_eventos.top();
         lista_eventos.pop();
 
         // Se actualiza el estado de las etidades tipo maquina
-        for (Maquina maquina : lista_maquinas){
-            maquina.actualizar_estado(evento_actual.get_origen(), lista_eventos, tiempo_actual);
+        bool evento_procesado = false;
+        for (Maquina& maquina : lista_maquinas){
+            // Si la máquina procesa el evento, devolvemos true y rompemos para que nadie más lo use
+            if (maquina.actualizar_estado(evento_actual.get_origen(), lista_eventos, tiempo_actual)) {
+                evento_procesado = true;
+                break; // El evento ya fue consumido
+            }
         }
 
-        print_cola_eventos(lista_eventos);
-        printf("--- Evento procesado \n");
+        if (evento_procesado) {
+            printf("--- Evento actual procesado \n");
+        } else {
+            printf("--- Evento actual NO procesado \n");
+        }
 
 
         // Rutina de finalizado de simulacion en caso de que se acaben los eventos

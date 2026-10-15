@@ -6,9 +6,15 @@ class Entidad {
     
     private:
 
-    public:
+    protected: // permite que las clases hija si accedan
+        int id = 0;
 
-}
+    public:
+        Entidad(int id){
+            this->id = id;
+        }
+        int get_id(){return this->id;}
+};
 
 
 #endif

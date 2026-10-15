@@ -3,7 +3,7 @@ simulacion:
   experimentos:
 
   - nombre: "prueba"
-    tiempo_simulacion: 60.0
+    tiempo_simulacion: 30.0
 
 
 modelo:
@@ -27,9 +27,9 @@ modelo:
   - id: 3
     tipo: "maquina"
     trigger: [1]
-    tiempo: 5.0
+    tiempo: 10.0
   
   - id: 4
     tipo: "maquina"
     trigger: [0, 1]
-    tiempo: 6.0
+    tiempo: 3.0
