@@ -9,27 +9,30 @@ simulacion:
 modelo:
   entidades:
     
-  - id: 0
-    tipo: "entrada"
+  - tipo: "entrada"
+    id: 0
     generador: "LINEAR_CONGRUENTIAL_ENGINE"
     lambda: 0.2
 
-  - id: 1
-    tipo: "entrada"
+  - tipo: "entrada"
+    id: 1
     generador: "LINEAR_CONGRUENTIAL_ENGINE"
     lambda: 0.1
 
-  - id: 2
-    tipo: "maquina"
+  - tipo: "maquina"
+    id: 2
     trigger: [0]
     tiempo: 10.0
+    prioridad: 2
 
-  - id: 3
-    tipo: "maquina"
+  - tipo: "maquina"
+    id: 3
     trigger: [1]
     tiempo: 10.0
+    prioridad: 2
   
-  - id: 4
-    tipo: "maquina"
+  - tipo: "maquina"
+    id: 4
     trigger: [0, 1]
     tiempo: 3.0
+    prioridad: 1

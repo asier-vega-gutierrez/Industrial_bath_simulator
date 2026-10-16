@@ -54,15 +54,21 @@ class Config {
             return lista;
         }
 
+
+
         std::vector<Maquina> get_maquinas() {
             std::vector<Maquina> lista;
             const auto& elemento = config["modelo"]["entidades"];
             for (const auto& elm : elemento) {
                 if (elm["tipo"].as<std::string>() == "maquina"){
-                    Maquina maq = Maquina(elm["id"].as<int>(), elm["trigger"].as<std::vector<int>>(), elm["tiempo"].as<double>());
+                    Maquina maq = Maquina(elm["id"].as<int>(), elm["trigger"].as<std::vector<int>>(), elm["tiempo"].as<double>(), elm["prioridad"].as<int>());
                     lista.push_back(maq);
                 }
             }
+            // Esta lista deve ir ordenada segun la prioridad (primero los de prioridad 1) que se establece en la configuracion
+            std::sort(lista.begin(), lista.end(), [](const Maquina& a, const Maquina& b) {
+                return a.get_prioridad() < b.get_prioridad(); 
+            });
             return lista;
         }
 
