@@ -11,26 +11,6 @@
 #include <array>
 
 
-void generar_eventos_entrada(ColaEventos& lista, int generador, int origen, double frecuencia_llegada, double tiempo_simulacion) {
-
-    Generador gen = Generador(generador);
-
-    double tiempo_actual = 0.0;
-
-    while (tiempo_actual < tiempo_simulacion) {
-        double tiempo_hasta_siguiente = gen.exponencial(frecuencia_llegada);
-        tiempo_actual += tiempo_hasta_siguiente;
-
-        if (tiempo_actual <= tiempo_simulacion) {
-            // inserta el evento en la posición correcta según su tiempo
-            lista.push(Evento(origen, EXTERNO, tiempo_actual));
-        }
-    }
-}
-
-
-
-
 void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Maquina> lista_maquinas){
 
     double tiempo_actual = 0.0;
@@ -88,7 +68,7 @@ int main() {
     ColaEventos lista_eventos;
     // Generacion de todos los enventos externo
     for(Entrada entrada : lista_entradas){
-        generar_eventos_entrada(lista_eventos, entrada.get_generador(), entrada.get_id(), entrada.get_lambda(), lista_experimentos[0].get_tiempo_simulacion());
+        entrada.generar_eventos(lista_eventos, lista_experimentos[0].get_tiempo_simulacion());
     }
 
 
