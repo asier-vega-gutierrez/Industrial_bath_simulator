@@ -1,3 +1,4 @@
+#include "../const.h"
 
 #include <random>
 #include <variant>
@@ -8,9 +9,11 @@
 class Generador {
 
     private:
-    
+
+        // esto es un generador de numeros alatorios que se base en entropía del hardware (ruido y fluctiuaciones del sistema)
+        // se emplea com semilla para los tres generadores psudoaleatorios
         std::random_device rd;
-        // esto almacena los tres motores posibles
+        // esto almacena los tres motores posibles que se van a utilizar
         std::variant<std::minstd_rand, std::mt19937, std::ranlux48> motor;
 
 
@@ -28,23 +31,12 @@ class Generador {
         }
 
         // exponencial (lambda = frecuencia)
-        double exponencial(double frecuencia){
-            std::exponential_distribution<double> dist(frecuencia);
-            // std::visit aplica la distribución al motor que esté activo
-            return std::visit([&](auto& arg) { return dist(arg); }, motor);
-        }
-
+        double exponencial(double frecuencia);
         // Entero uniforme
-        int entero(int min, int max) {
-            std::uniform_int_distribution<int> dist(min, max);
-            return std::visit([&](auto& arg) { return dist(arg); }, motor);
-        }
-
+        int entero(int min, int max);
         // Real uniforme
-        double real(double min, double max) {
-            std::uniform_real_distribution<double> dist(min, max);
-            return std::visit([&](auto& arg) { return dist(arg); }, motor);
-        }
+        double real(double min, double max);
+
     };
 
 #endif

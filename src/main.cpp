@@ -1,6 +1,5 @@
-#include "const.h"
+#include "./const.h"
 #include "./evento/evento.h"
-#include "./evento/cola.h"
 #include "./generador/generador.h"
 #include "./entidades/maquina.h"
 #include "./config/config.h"
@@ -36,7 +35,7 @@ void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion, std::vecto
 
     double tiempo_actual = 0.0;
 
-    // La simulacion peude terminar si se excede el tiempo de simulacion
+    // La simulacion termina si se excede el tiempo de simulacion
     while (tiempo_simulacion > tiempo_actual){
 
         printf("---------------------------------\n");
