@@ -51,3 +51,16 @@ std::vector<Maquina> Config::get_maquinas() {
     });
     return lista;
 }
+
+
+std::vector<Salida> Config::get_salidas(){
+    std::vector<Salida> lista;
+    const auto& elementos = config["modelo"]["entidades"];
+    for (const auto& elm : elementos) {
+        if (elm["tipo"].as<std::string>() == "salida"){
+            Salida salida = Salida(elm["id"].as<int>(), elm["trigger"].as<std::vector<int>>());
+            lista.push_back(salida);
+        }
+    }
+    return lista;
+}

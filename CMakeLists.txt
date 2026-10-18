@@ -28,10 +28,6 @@ FetchContent_MakeAvailable(yaml-cpp)
 # 2. Gather C++ source files
 file(GLOB_RECURSE SRCS  # TODO cambiar a los .cpp tal cual no a todos
     "./src/*.cpp"
-    "./src/evento/*.cpp"
-    "./src/generador/*.cpp"
-    "./src/entidades/*.cpp"
-    "./src/experimento/*.cpp"
 )
 
 # 3. Create executable target
@@ -42,6 +38,6 @@ target_link_libraries(main PRIVATE yaml-cpp::yaml-cpp)
 
 # 5. Output binary to ../bin directory
 set_target_properties(main PROPERTIES
-    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/../bin"
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin"
 )
 

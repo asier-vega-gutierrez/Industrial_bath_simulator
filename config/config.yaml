@@ -33,6 +33,11 @@ modelo:
   
   - tipo: "maquina"
     id: 4
-    trigger: [0, 1]
+    trigger: [2, 3]
     tiempo: 3.0
     prioridad: 1
+
+  - tipo: "salida"
+    id: 5
+    trigger: [4]
+

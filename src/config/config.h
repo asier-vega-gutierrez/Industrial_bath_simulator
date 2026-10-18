@@ -1,5 +1,6 @@
 #include "../entidades/maquina.h"
 #include "../entidades/entrada.h"
+#include "../entidades/salida.h"
 #include "../experimento/experimento.h"
 
 #include <string>
@@ -25,6 +26,7 @@ class Config {
         std::vector<Experimento> get_experimentos();
         std::vector<Entrada> get_entradas();
         std::vector<Maquina> get_maquinas();
+        std::vector<Salida> get_salidas();
 
 };
 
