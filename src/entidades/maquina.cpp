@@ -16,7 +16,7 @@ bool Maquina::actualizar_estado(int id_origen, ColaEventos& lista_eventos, doubl
             evento_para_mi = true;
             if (estados[i] == false){
                 estados[i] = true;
-                printf("--- Maquina %d actualiza su estado\n", this->id);
+                this->registro.print_entidad_estado(this->id);
             }else{
                 return false;
             }
@@ -31,7 +31,7 @@ bool Maquina::actualizar_estado(int id_origen, ColaEventos& lista_eventos, doubl
     // Solo si todos los estados son True se genera un evento
     bool evento_listo = std::all_of(estados.begin(), estados.end(), [](bool v) { return v; });
     if(evento_listo){
-        printf("--- Maquina %d a generado un evento\n", this->id);
+        this->registro.print_entidad_generacion(this->id);
         lista_eventos.push(Evento(this->id, INTERNO, tiempo_actual+this->tiempo));
         //si genera un evento la maquian se bloquea el tiempo que ejecute
         this->tiempo_bloqueo = tiempo_actual + this->tiempo;

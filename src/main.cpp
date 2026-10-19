@@ -4,27 +4,35 @@
 #include "./entidades/maquina.h"
 #include "./config/config.h"
 #include "./experimento/experimento.h"
+#include "./registro/registro.h"
 
 #include <iostream>
 #include <random>
 #include <vector>
 #include <array>
 
-
-void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Maquina> lista_maquinas, std::vector<Salida> lista_salidas){
+// Realiza todas las llamadas para ejecutar la simulacion
+void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Maquina> lista_maquinas, std::vector<Salida> lista_salidas){
 
     double tiempo_actual = 0.0;
+
+    // Registro de actividad para monstrar toda la informacion durante la ejecucion
+    Registro registro = Registro();
+    registro.print_iniciar();
 
     // La simulacion termina si se excede el tiempo de simulacion
     while (tiempo_simulacion > tiempo_actual){
 
-        printf("---------------------------------\n");
-        printf("--- Nueva itieracion de simulacion \n");
-        print_cola_eventos(lista_eventos);
+        registro.print_estado_sistema(lista_eventos.top());
+        registro.print_cola_eventos(lista_eventos);
 
+        // Se recoje el evento superiro de la lsita que es el primero en tiempo que va a ocurrir
         Evento evento_actual = lista_eventos.top();
-        lista_eventos.pop();
+        lista_eventos.pop(); // se elmina una vez recojido
 
+
+        // RUTINA DE EVENTOS
+        // aqui se procesa el evento hasta que es consumido
         bool evento_procesado = false;
 
         // Se actualiza el estado de las etidades tipo maquina
@@ -48,12 +56,10 @@ void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion, std::vecto
             }
         }
 
-        if (evento_procesado) {
-            printf("--- Evento actual procesado \n");
-        } else {
-            printf("--- Evento actual NO procesado \n");
-        }
-
+        // TODO esto se tiene que llamar desde resutlado
+        registro.print_resultado_iteracion(evento_procesado);
+        
+        // RUTINA DE FINALIZACION
         // Rutina de finalizado de simulacion en caso de que se acaben los eventos
         if (lista_eventos.size() != 0){
             // Si no se han terminado los eventos se suma el tiempo hasta el siguiente evento
@@ -65,9 +71,10 @@ void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion, std::vecto
         }
     }
 
-    printf("+++++++++++++++++++++++++++++++++ \n");
+    registro.print_finalizar();
 
-    // TODO mover a clase registro de actividad
+
+    // TODO mover a clase resutlado o procesdo resultados se pinta desde la clase registro
     for (Salida salida : lista_salidas){
         printf("Eventos de la salida %d \n", salida.get_id());
         for(Evento ev : salida.get_eventos()){
@@ -78,8 +85,8 @@ void simulacion(ColaEventos& lista_eventos, double tiempo_simulacion, std::vecto
 }
 
 
-int main() {
-
+// Se ocupa de llamar a los subprogramas que realizan la simulacion
+void inicializacion(){
 
     // Cargar la configuracion
     Config config = Config("../config/config.yaml");
@@ -96,10 +103,13 @@ int main() {
         entrada.generar_eventos(lista_eventos, lista_experimentos[0].get_tiempo_simulacion());
     }
 
+    // El ultimo paso de la inizacion es llamar al monitor para que comience la simulacion
+    monitor(lista_eventos, lista_experimentos[0].get_tiempo_simulacion(), lista_maquinas, lista_salidas);
 
-    simulacion(lista_eventos, lista_experimentos[0].get_tiempo_simulacion(), lista_maquinas, lista_salidas);
+}
 
-
+int main(int argc, char *argv[]) {
+    inicializacion();
     return 0;
 }
 

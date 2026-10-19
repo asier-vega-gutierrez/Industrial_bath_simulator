@@ -39,14 +39,4 @@ struct CompararTiempo {
 // Tipo definido para simplificar la firma de las funciones
 using ColaEventos = std::priority_queue<Evento, std::vector<Evento>, CompararTiempo>;
 
-// TODO esto deve ir en una clase log que haga las de registro de actividad, entoces eleminar el inline
-void inline print_cola_eventos(ColaEventos& cola){
-    ColaEventos copia = cola;
-    while (!copia.empty()) {
-        Evento ev = copia.top();
-        printf("%d %d %f\n", ev.get_origen(), ev.get_tipo(), ev.get_tiempo());
-        copia.pop(); // Remove the top element to access the next one
-    }
-}
-
 #endif
