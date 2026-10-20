@@ -19,6 +19,8 @@ class Config {
         YAML::Node config;
 
     public:
+
+        Config() = default;
         explicit Config(const std::string& path) {
             config = YAML::LoadFile(path);
         }

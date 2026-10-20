@@ -11,7 +11,7 @@
 #include <vector>
 #include <array>
 
-// Realiza todas las llamadas para ejecutar la simulacion
+// Se ocupa de llamar a los subprogramas que realizan la simulacion
 void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Maquina> lista_maquinas, std::vector<Salida> lista_salidas){
 
     double tiempo_actual = 0.0;
@@ -78,27 +78,25 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<M
     for (Salida salida : lista_salidas){
         printf("Eventos de la salida %d \n", salida.get_id());
         for(Evento ev : salida.get_eventos()){
-            printf("%d %d %f\n", ev.get_origen(), ev.get_tipo(), ev.get_tiempo());
+            printf("> %d %d %f\n", ev.get_origen(), ev.get_tipo(), ev.get_tiempo());
         }
     }
 
 }
 
 
-// Se ocupa de llamar a los subprogramas que realizan la simulacion
-void inicializacion(){
+// inicializa las  las entidades segun configuracion y la lista de eventos
+void inicializacion(Config config){
 
     // Cargar la configuracion
-    Config config = Config("../config/config.yaml");
     std::vector<Entrada> lista_entradas = config.get_entradas();
     std::vector<Maquina> lista_maquinas = config.get_maquinas();
     std::vector<Salida> lista_salidas = config.get_salidas();
     std::vector<Experimento> lista_experimentos = config.get_experimentos(); //TODO lo ultimo en implementar, cada experimiento tiene una cola de eventos???
     
-
     // Declaración de la cola de prioridad de eventos
     ColaEventos lista_eventos;
-    // Generacion de todos los enventos externo
+    // Generacion de todos los enventos externos
     for(Entrada entrada : lista_entradas){
         entrada.generar_eventos(lista_eventos, lista_experimentos[0].get_tiempo_simulacion());
     }
@@ -108,10 +106,20 @@ void inicializacion(){
 
 }
 
+// Se le deve pasar en la primera posicion la ruta al archivo de configuracion
 int main(int argc, char *argv[]) {
-    inicializacion();
+    Config config;
+    if (argc > 1) {
+        config = Config(argv[argc-1]);
+        inicializacion(config);
+    }else{
+        printf("Introduce la ruta al fichero de configuracion\n");
+    }
+    
     return 0;
 }
+
+// Desde la carpeta build: make && ../bin/main ../config/config.yaml
 
 
 

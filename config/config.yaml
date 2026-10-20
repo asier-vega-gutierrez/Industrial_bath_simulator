@@ -3,7 +3,7 @@ simulacion:
   experimentos:
 
   - nombre: "prueba"
-    tiempo_simulacion: 30.0
+    tiempo_simulacion: 60.0
 
 
 modelo:
