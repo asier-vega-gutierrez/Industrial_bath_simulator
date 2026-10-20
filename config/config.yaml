@@ -21,23 +21,23 @@ modelo:
 
   - tipo: "maquina"
     id: 2
-    trigger: [0]
+    relaciones: [0]
     tiempo: 10.0
     prioridad: 2
 
   - tipo: "maquina"
     id: 3
-    trigger: [1]
+    relaciones: [1]
     tiempo: 10.0
     prioridad: 2
   
   - tipo: "maquina"
     id: 4
-    trigger: [2, 3]
+    relaciones: [2, 3]
     tiempo: 3.0
     prioridad: 1
 
   - tipo: "salida"
     id: 5
-    trigger: [4]
+    relaciones: [4]
 

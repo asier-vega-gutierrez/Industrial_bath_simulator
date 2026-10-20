@@ -41,7 +41,7 @@ std::vector<Maquina> Config::get_maquinas() {
     const auto& elemento = config["modelo"]["entidades"];
     for (const auto& elm : elemento) {
         if (elm["tipo"].as<std::string>() == "maquina"){
-            Maquina maq = Maquina(elm["id"].as<int>(), elm["trigger"].as<std::vector<int>>(), elm["tiempo"].as<double>(), elm["prioridad"].as<int>());
+            Maquina maq = Maquina(elm["id"].as<int>(), elm["relaciones"].as<std::vector<int>>(), elm["tiempo"].as<double>(), elm["prioridad"].as<int>());
             lista.push_back(maq);
         }
     }
@@ -58,7 +58,7 @@ std::vector<Salida> Config::get_salidas(){
     const auto& elementos = config["modelo"]["entidades"];
     for (const auto& elm : elementos) {
         if (elm["tipo"].as<std::string>() == "salida"){
-            Salida salida = Salida(elm["id"].as<int>(), elm["trigger"].as<std::vector<int>>());
+            Salida salida = Salida(elm["id"].as<int>(), elm["relaciones"].as<std::vector<int>>());
             lista.push_back(salida);
         }
     }

@@ -10,9 +10,9 @@ bool Maquina::actualizar_estado(int id_origen, ColaEventos& lista_eventos, doubl
 
     bool evento_para_mi = false;
 
-    // Segun si el evento pertence a los trigger de esta maquina se actuliza su correspondiente estado  
-    for(int i=0; i<(int)triggers.size(); i++){
-        if(triggers[i] == id_origen){
+    // Segun si el evento pertence a las relaciones de esta maquina se actuliza su correspondiente estado  
+    for(int i=0; i<(int)relaciones.size(); i++){
+        if(relaciones[i] == id_origen){
             evento_para_mi = true;
             if (estados[i] == false){
                 estados[i] = true;

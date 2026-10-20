@@ -8,14 +8,14 @@ class Salida {
 
     private:
         int id = 0;
-        std::vector<int> triggers = {};
+        std::vector<int> relaciones = {};
         std::vector<Evento> eventos = {};
 
     public:
 
-        Salida(int id, std::vector<int> triggers){
+        Salida(int id, std::vector<int> relaciones){
             this->id = id;
-            this->triggers = triggers;
+            this->relaciones = relaciones;
         }
 
         int get_id(){return this->id;}

@@ -16,17 +16,17 @@ class Maquina: public Entidad {
         double tiempo = 0.0;
         double tiempo_bloqueo = 0.0;
         int prioridad = 1;
-        std::vector<int> triggers = {}; //los origenes de los eventos que desencadenan esta maquina
-        std::vector<bool> estados = {}; //idica si el evento de la misma posicion que triggers ha ocurrido
+        std::vector<int> relaciones = {}; //los origenes de los eventos que desencadenan esta maquina
+        std::vector<bool> estados = {}; //idica si el evento de la misma posicion que relaciones ha ocurrido
 
     public:
 
-        Maquina(int id, std::vector<int> triggers, double tiempo, int prioridad) : Entidad(id){
+        Maquina(int id, std::vector<int> relaciones, double tiempo, int prioridad) : Entidad(id){
             // this->id = id;
             this->tiempo = tiempo;
             this->prioridad = prioridad;
-            for(int trigger : triggers){
-                this->triggers.push_back(trigger);
+            for(int relacion : relaciones){
+                this->relaciones.push_back(relacion);
                 this->estados.push_back(false);
             }
         }
