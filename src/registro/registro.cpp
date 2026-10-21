@@ -40,8 +40,8 @@ void Registro::print_entidad_generacion(int id){
 // TODO esto se tien que llamar desde resutlado
 void Registro::print_resultado_iteracion(bool flag){
     if (flag) {
-        printf("%sEvento actual procesado \n", this->cabecera_informacion);
+        printf("%sEvento actual procesado \n", this->cabecera_resultado);
     } else {
-        printf("%sEvento actual NO procesado \n", this->cabecera_informacion);
+        printf("%sEvento actual NO procesado \n", this->cabecera_resultado);
     }
 }

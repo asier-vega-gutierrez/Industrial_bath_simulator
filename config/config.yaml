@@ -17,18 +17,18 @@ modelo:
   - tipo: "entrada"
     id: 1
     generador: "LINEAR_CONGRUENTIAL_ENGINE"
-    lambda: 0.1
+    lambda: 0.2
 
   - tipo: "maquina"
     id: 2
     relaciones: [0]
-    tiempo: 10.0
+    tiempo: 30.0
     prioridad: 2
 
   - tipo: "maquina"
     id: 3
     relaciones: [1]
-    tiempo: 10.0
+    tiempo: 30.0
     prioridad: 2
   
   - tipo: "maquina"

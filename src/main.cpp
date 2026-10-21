@@ -5,6 +5,7 @@
 #include "./config/config.h"
 #include "./experimento/experimento.h"
 #include "./registro/registro.h"
+#include "./resultado/resultado.h"
 
 #include <iostream>
 #include <random>
@@ -15,6 +16,10 @@
 void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Maquina> lista_maquinas, std::vector<Salida> lista_salidas){
 
     double tiempo_actual = 0.0;
+
+    // Esto alamcena la informacion durante la ejecucion para despues obtener la solucion de la simulacion
+    Resultado resultado = Resultado();
+    resultado.almacenar_inicial(lista_eventos);
 
     // Registro de actividad para monstrar toda la informacion durante la ejecucion
     Registro registro = Registro();
@@ -56,8 +61,8 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<M
             }
         }
 
-        // TODO esto se tiene que llamar desde resutlado
-        registro.print_resultado_iteracion(evento_procesado);
+        // Cada iteracion se almacena informacion para el resultado final
+        resultado.almacenar_iteracion(evento_procesado, evento_actual);
         
         // RUTINA DE FINALIZACION
         // Rutina de finalizado de simulacion en caso de que se acaben los eventos
@@ -72,6 +77,11 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<M
     }
 
     registro.print_finalizar();
+
+    // Al final se almacena informacion relevante
+    resultado.almacenar_final(lista_eventos);
+
+    resultado.procesar();
 
 
     // TODO mover a clase resutlado o procesdo resultados se pinta desde la clase registro

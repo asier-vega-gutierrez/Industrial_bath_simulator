@@ -10,6 +10,7 @@ class Registro {
     private:
         const char* cabecera_informacion = "--- "; //si se llama desde el registro del monitor
         const char* cabecera_accion = "--> "; //si se llama desde el registro de una entidad
+        const char* cabecera_resultado = "--{ "; //si se llama desde el registro de los resultados
 
     public:
 
