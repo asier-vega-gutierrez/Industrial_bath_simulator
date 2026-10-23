@@ -22,8 +22,8 @@ class Evento {
             this->tipo = tipo;
             this->tiempo = tiempo;
         }
-        int get_tipo(){return this->tipo;}
-        int get_origen(){return this->origen;}
+        int get_tipo() const {return this->tipo;}
+        int get_origen() const {return this->origen;}
         double get_tiempo() const {return this->tiempo;}
 
 };

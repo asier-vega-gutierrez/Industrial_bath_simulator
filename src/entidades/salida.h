@@ -10,6 +10,7 @@ class Salida {
         int id = 0;
         std::vector<int> relaciones = {};
         std::vector<Evento> eventos = {};
+        int count_eventos = 0;
 
     public:
 
@@ -18,9 +19,11 @@ class Salida {
             this->relaciones = relaciones;
         }
 
-        int get_id(){return this->id;}
-        std::vector<Evento> get_eventos(){return this-> eventos;}
+        int get_id() const {return this->id;}
+        std::vector<Evento> get_eventos() const {return this-> eventos;}
+        int get_count_eventos() const {return this->count_eventos;}
         bool recoger_evento(Evento evento_actual);
+        
 
 };
 

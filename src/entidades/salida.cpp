@@ -6,6 +6,7 @@ bool Salida::recoger_evento(Evento evento_actual){
     for(int i=0; i<(int)relaciones.size(); i++){
         if(relaciones[i] == evento_actual.get_origen()){
             this->eventos.push_back(evento_actual);
+            this->count_eventos += 1;
             return true;
         }
     }

@@ -13,12 +13,12 @@
 #include <array>
 
 // Se ocupa de llamar a los subprogramas que realizan la simulacion
-void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Maquina> lista_maquinas, std::vector<Salida> lista_salidas){
+void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Maquina> lista_maquinas, std::vector<Salida>& lista_salidas){
 
     double tiempo_actual = 0.0;
 
     // Esto alamcena la informacion durante la ejecucion para despues obtener la solucion de la simulacion
-    Resultado resultado = Resultado();
+    Resultado resultado = Resultado(lista_salidas);
     resultado.almacenar_inicial(lista_eventos);
 
     // Registro de actividad para monstrar toda la informacion durante la ejecucion
@@ -82,15 +82,6 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<M
     resultado.almacenar_final(lista_eventos);
 
     resultado.procesar();
-
-
-    // TODO mover a clase resutlado o procesdo resultados se pinta desde la clase registro
-    for (Salida salida : lista_salidas){
-        printf("Eventos de la salida %d \n", salida.get_id());
-        for(Evento ev : salida.get_eventos()){
-            printf("> %d %d %f\n", ev.get_origen(), ev.get_tipo(), ev.get_tiempo());
-        }
-    }
 
 }
 

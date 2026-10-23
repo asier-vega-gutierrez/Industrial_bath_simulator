@@ -3,7 +3,7 @@ simulacion:
   experimentos:
 
   - nombre: "prueba"
-    tiempo_simulacion: 60.0
+    tiempo_simulacion: 30.0
 
 
 modelo:
@@ -22,13 +22,13 @@ modelo:
   - tipo: "maquina"
     id: 2
     relaciones: [0]
-    tiempo: 30.0
+    tiempo: 10.0
     prioridad: 2
 
   - tipo: "maquina"
     id: 3
     relaciones: [1]
-    tiempo: 30.0
+    tiempo: 10.0
     prioridad: 2
   
   - tipo: "maquina"
