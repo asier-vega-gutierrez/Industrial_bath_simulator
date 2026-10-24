@@ -18,8 +18,8 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<M
     double tiempo_actual = 0.0;
 
     // Esto alamcena la informacion durante la ejecucion para despues obtener la solucion de la simulacion
-    Resultado resultado = Resultado(lista_salidas);
-    resultado.almacenar_inicial(lista_eventos);
+    Resultado resultado = Resultado(tiempo_simulacion, lista_salidas, lista_maquinas);
+    resultado.almacenar_inicial(lista_eventos) ;
 
     // Registro de actividad para monstrar toda la informacion durante la ejecucion
     Registro registro = Registro();

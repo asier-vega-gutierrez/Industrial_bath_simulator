@@ -44,7 +44,6 @@ void Resultado::procesar(){
 
     // Porcentaje de los eventos EXTERNOs procesados y no 
     double eesp = (double)count_eventos_sinprocesar_ext / (count_eventos_ext - count_eventos_finales_ext);
-    // printf("Cantidad de eventos EXTERNOs generados: %d\n", count_eventos_iniciales);
     printf("Cantidad de eventos EXTERNOs procesados: %d\n", count_eventos_ext - count_eventos_finales_ext - count_eventos_sinprocesar_ext);
     printf("Cantidad de eventos EXTERNOs sin procesar: %d\n", count_eventos_sinprocesar_ext);
     printf("Eventos EXTERNOs sin procesar: %f % \n", eesp * 100.0);
@@ -57,12 +56,12 @@ void Resultado::procesar(){
 
     // Porcentaje de los eventos INTERNOS procesados y no
     double eisp = (double)count_eventos_sinprocesar_int / (count_eventos_int - count_eventos_finales_int);
-    // printf("Cantidad de eventos INTERNOs generados: %d\n", count_eventos_int);
     printf("Cantidad de eventos INTERNOs procesados: %d\n", count_eventos_int - count_eventos_finales_int - count_eventos_sinprocesar_int);
     printf("Cantidad de eventos INTERNOs sin procesar: %d\n", count_eventos_sinprocesar_int);
     printf("Eventos INTERNOs sin procesar: %f % \n", eisp * 100.0);
     printf("Eventos INTERNOs procesados: %f % \n", (1-eisp) * 100.0);
 
+    // Cantidad de eventos de salida
     for(const Salida& salida : this->lista_salidas){
         if (salida.get_count_eventos() != 0){
             printf("Cantidad de eventos de la salida %d es %d son: \n", salida.get_id(), salida.get_count_eventos());
@@ -71,6 +70,19 @@ void Resultado::procesar(){
             }
         }
     }
+
+
+    // Eficiencia de las maquina (por comodidad se ordena segun id)
+    std::vector<Maquina> lista_maquinas_sortid = this->lista_maquinas;
+    std::sort(lista_maquinas_sortid.begin(), lista_maquinas_sortid.end(), [](const Maquina& a, const Maquina& b) {
+        return a.get_id() < b.get_id(); 
+    });
+    for(Maquina maquina : lista_maquinas_sortid){ 
+        double em = (maquina.get_tiempo_produciendo()/this->tiempo_simulacion) * 100.0;
+        printf("Eficiencia de la maquina %d es: %f % \n", maquina.get_id(), em);
+        printf("El timepo que ha estado parada %d es: %.2f minutos \n", maquina.get_id(), maquina.get_tiempo_sinproducir());
+    }
+
 
 }
 
