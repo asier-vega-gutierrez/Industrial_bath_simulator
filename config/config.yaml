@@ -1,10 +1,6 @@
 
 simulacion:
-  experimentos:
-
-  - nombre: "prueba"
-    tiempo_simulacion: 30.0
-
+  tiempo_simulacion: 60.0
 
 modelo:
   entidades:
@@ -13,11 +9,13 @@ modelo:
     id: 0
     generador: "LINEAR_CONGRUENTIAL_ENGINE"
     lambda: 0.2
+    tiempo_generacion: 15.0
 
   - tipo: "entrada"
     id: 1
     generador: "LINEAR_CONGRUENTIAL_ENGINE"
     lambda: 0.2
+    tiempo_generacion: 15.0
 
   - tipo: "maquina"
     id: 2

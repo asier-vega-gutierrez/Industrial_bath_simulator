@@ -1,7 +1,6 @@
 #include "../entidades/maquina.h"
 #include "../entidades/entrada.h"
 #include "../entidades/salida.h"
-#include "../experimento/experimento.h"
 
 #include <string>
 #include <vector>
@@ -25,10 +24,11 @@ class Config {
             config = YAML::LoadFile(path);
         }
 
-        std::vector<Experimento> get_experimentos();
         std::vector<Entrada> get_entradas();
         std::vector<Maquina> get_maquinas();
         std::vector<Salida> get_salidas();
+
+        double get_tiempo_simulacion();
 
 };
 

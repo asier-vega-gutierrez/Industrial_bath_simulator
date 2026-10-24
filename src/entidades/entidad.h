@@ -16,7 +16,7 @@ class Entidad {
         Entidad(int id){
             this->id = id;
         }
-        int get_id(){return this->id;}
+        int get_id() const {return this->id;}
 };
 
 

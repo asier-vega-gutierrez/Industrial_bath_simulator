@@ -3,7 +3,6 @@
 #include "./generador/generador.h"
 #include "./entidades/maquina.h"
 #include "./config/config.h"
-#include "./experimento/experimento.h"
 #include "./registro/registro.h"
 #include "./resultado/resultado.h"
 
@@ -93,17 +92,16 @@ void inicializacion(Config config){
     std::vector<Entrada> lista_entradas = config.get_entradas();
     std::vector<Maquina> lista_maquinas = config.get_maquinas();
     std::vector<Salida> lista_salidas = config.get_salidas();
-    std::vector<Experimento> lista_experimentos = config.get_experimentos(); //TODO lo ultimo en implementar, cada experimiento tiene una cola de eventos???
     
     // Declaración de la cola de prioridad de eventos
     ColaEventos lista_eventos;
     // Generacion de todos los enventos externos
     for(Entrada entrada : lista_entradas){
-        entrada.generar_eventos(lista_eventos, lista_experimentos[0].get_tiempo_simulacion());
+        entrada.generar_eventos(lista_eventos, entrada.get_tiempo_generacion());
     }
 
     // El ultimo paso de la inizacion es llamar al monitor para que comience la simulacion
-    monitor(lista_eventos, lista_experimentos[0].get_tiempo_simulacion(), lista_maquinas, lista_salidas);
+    monitor(lista_eventos, config.get_tiempo_simulacion(), lista_maquinas, lista_salidas);
 
 }
 

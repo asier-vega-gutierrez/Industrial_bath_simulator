@@ -41,8 +41,8 @@ class Maquina: public Entidad {
         int get_prioridad() const {return this->prioridad;}
         // Llamar para actualizar el estado y generar los eventos
         bool actualizar_estado(int id_origen, ColaEventos& lista_eventos, double tiempo_actual);
-        double get_tiempo_produciendo(){return this->tiempo_produciendo;}
-        double get_tiempo_sinproducir(){return this->tiempo_sinproducir;}
+        double get_tiempo_produciendo() const {return this->tiempo_produciendo;}
+        double get_tiempo_sinproducir() const {return this->tiempo_sinproducir;}
 
 };
 

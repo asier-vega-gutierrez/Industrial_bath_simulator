@@ -1,15 +1,8 @@
 
 #include "config.h"
 
-
-std::vector<Experimento> Config::get_experimentos() {
-    std::vector<Experimento> lista;
-    const auto& elementos = config["simulacion"]["experimentos"];
-    for (const auto& elm : elementos) {
-        Experimento experimento = Experimento(elm["nombre"].as<std::string>(), elm["tiempo_simulacion"].as<double>());
-        lista.push_back(experimento);
-    }
-    return lista;
+double Config::get_tiempo_simulacion() {
+    return config["simulacion"]["tiempo_simulacion"].as<double>();
 }
 
 
@@ -27,7 +20,7 @@ std::vector<Entrada> Config::get_entradas() {
             } else if(!generador_str.compare("MERSENNE_TWISTER_ENGINE")){
                 generador = MERSENNE_TWISTER_ENGINE;
             }
-            Entrada entrada = Entrada(elm["id"].as<int>(), generador, elm["lambda"].as<double>());
+            Entrada entrada = Entrada(elm["id"].as<int>(), generador, elm["lambda"].as<double>(), elm["tiempo_generacion"].as<double>());
             lista.push_back(entrada);
         }
     }
