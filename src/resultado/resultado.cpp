@@ -54,7 +54,7 @@ void Resultado::procesar(){
     int count_eventos_finales_int = count_vector_tipo_evento(eventos_finales, INTERNO);
     int count_eventos_sinprocesar_int = count_vector_tipo_evento(eventos_sinprocesar, INTERNO);
 
-    // Porcentaje de los eventos INTERNOS procesados y no
+    // Porcentaje de los eventos INTERNOS procesados y no (TODO que pasa con los de tipo 3 ????)
     double eisp = (double)count_eventos_sinprocesar_int / (count_eventos_int - count_eventos_finales_int);
     printf("Cantidad de eventos INTERNOs procesados: %d\n", count_eventos_int - count_eventos_finales_int - count_eventos_sinprocesar_int);
     printf("Cantidad de eventos INTERNOs sin procesar: %d\n", count_eventos_sinprocesar_int);

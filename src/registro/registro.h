@@ -23,6 +23,10 @@ class Registro {
         void print_resultado_iteracion(bool flag);
         void print_entidad_estado(int id);
         void print_entidad_generacion(int id);
+        void print_cola_llena(int id);
+        void print_anadir_cola(int id, int actual);
+        void print_anadir_denuevo_cola(int id, int actual);
+        void print_elminar_cola(int id, int actual);
 
     };
 

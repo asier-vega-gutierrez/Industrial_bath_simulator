@@ -34,7 +34,7 @@ std::vector<Maquina> Config::get_maquinas() {
     const auto& elemento = config["modelo"]["entidades"];
     for (const auto& elm : elemento) {
         if (elm["tipo"].as<std::string>() == "maquina"){
-            Maquina maq = Maquina(elm["id"].as<int>(), elm["relaciones"].as<std::vector<int>>(), elm["tiempo"].as<double>(), elm["prioridad"].as<int>());
+            Maquina maq = Maquina(elm["id"].as<int>(), elm["relaciones"].as<std::vector<int>>(), elm["tiempo"].as<double>(), elm["prioridad"].as<int>(), elm["cola"].as<std::vector<int>>());
             lista.push_back(maq);
         }
     }

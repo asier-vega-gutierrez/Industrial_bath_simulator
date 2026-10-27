@@ -42,7 +42,7 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<M
         // Se actualiza el estado de las etidades tipo maquina
         for (Maquina& maquina : lista_maquinas){
             // Si la máquina procesa el evento, devolvemos true y salimos
-            if (maquina.actualizar_estado(evento_actual.get_origen(), lista_eventos, tiempo_actual)) {
+            if (maquina.actualizar_estado(evento_actual, lista_eventos, tiempo_actual)) {
                 evento_procesado = true;
                 break; // El evento ya fue consumido
             }
@@ -54,6 +54,7 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<M
             for (Salida& salida : lista_salidas){
                 // Si la salida consume el evento devolvemos true y salimos
                 if (salida.recoger_evento(evento_actual)) {
+                    printf("--- Evento de salida detectado \n"); // TODO registro
                     evento_procesado = true;
                     break; // El evento ya fue consumido
                 }

@@ -22,18 +22,21 @@ modelo:
     relaciones: [0]
     tiempo: 10.0
     prioridad: 2
+    cola: [3]
 
   - tipo: "maquina"
     id: 3
     relaciones: [1]
     tiempo: 10.0
     prioridad: 2
+    cola: [3]
   
   - tipo: "maquina"
     id: 4
     relaciones: [2, 3]
     tiempo: 3.0
     prioridad: 1
+    cola: [3, 3]
 
   - tipo: "salida"
     id: 5

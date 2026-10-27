@@ -12,7 +12,7 @@ void Registro::print_cola_eventos(ColaEventos cola){
     printf("%sLista de eventos: \n", this->cabecera_informacion);
     while (!copia.empty()) {
         Evento ev = copia.top();
-        printf("> %d %d %f\n", ev.get_origen(), ev.get_tipo(), ev.get_tiempo());
+        printf("> origen: %d tipo: %d tiempo: %f\n", ev.get_origen(), ev.get_tipo(), ev.get_tiempo());
         copia.pop(); // Remove the top element to access the next one
     }
 }
@@ -34,6 +34,23 @@ void Registro::print_entidad_estado(int id){
 void Registro::print_entidad_generacion(int id){
     printf("%sMaquina %d a generado un evento\n", this->cabecera_accion, id);
 }   
+
+
+void Registro::print_cola_llena(int id){
+    printf("%sCola de maquina %d llena \n", this->cabecera_informacion, id);
+}
+
+void Registro::print_anadir_cola(int id, int actual){
+    printf("%sEvento anadido a la cola de maquina %d, cola con %d eventos \n", this->cabecera_accion, id, actual);
+}
+
+void Registro::print_anadir_denuevo_cola(int id, int actual){
+    printf("%sEvento anadido de nuevo a la cola de maquina %d, cola con %d eventos \n", this->cabecera_accion, id, actual);
+}
+
+void Registro::print_elminar_cola(int id, int actual){
+    printf("%sEvento eliminado de la cola de maquina %d, cola con %d eventos \n", this->cabecera_accion, id, actual);
+}
 
 
 
