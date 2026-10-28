@@ -27,6 +27,7 @@ class Registro {
         void print_anadir_cola(int id, int actual);
         void print_anadir_denuevo_cola(int id, int actual);
         void print_elminar_cola(int id, int actual);
+        void print_evento_salida();
 
     };
 

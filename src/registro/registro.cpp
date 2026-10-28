@@ -52,6 +52,9 @@ void Registro::print_elminar_cola(int id, int actual){
     printf("%sEvento eliminado de la cola de maquina %d, cola con %d eventos \n", this->cabecera_accion, id, actual);
 }
 
+void Registro::print_evento_salida(){
+    printf("%sEvento de salida detectado \n", this->cabecera_informacion);
+}
 
 
 // TODO esto se tien que llamar desde resutlado

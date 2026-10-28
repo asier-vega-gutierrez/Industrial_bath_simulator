@@ -54,7 +54,7 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<M
             for (Salida& salida : lista_salidas){
                 // Si la salida consume el evento devolvemos true y salimos
                 if (salida.recoger_evento(evento_actual)) {
-                    printf("--- Evento de salida detectado \n"); // TODO registro
+                    registro.print_evento_salida();
                     evento_procesado = true;
                     break; // El evento ya fue consumido
                 }
