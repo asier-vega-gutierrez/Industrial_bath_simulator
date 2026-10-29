@@ -17,6 +17,8 @@ class Config {
     private:
         YAML::Node config;
 
+        int get_generador(std::string);
+
     public:
 
         Config() = default;
@@ -29,6 +31,7 @@ class Config {
         std::vector<Salida> get_salidas();
 
         double get_tiempo_simulacion();
+        unsigned int get_semilla();
 
 };
 

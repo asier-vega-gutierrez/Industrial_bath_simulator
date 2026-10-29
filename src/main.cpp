@@ -18,22 +18,22 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<M
 
     // Esto alamcena la informacion durante la ejecucion para despues obtener la solucion de la simulacion
     Resultado resultado = Resultado(tiempo_simulacion, lista_salidas, lista_maquinas);
-    resultado.almacenar_inicial(lista_eventos) ;
+    resultado.almacenar_inicial(lista_eventos);
 
     // Registro de actividad para monstrar toda la informacion durante la ejecucion
     Registro registro = Registro();
     registro.print_iniciar();
-
+    
     // La simulacion termina si se excede el tiempo de simulacion
-    while (tiempo_simulacion > tiempo_actual){
-
+    while (tiempo_simulacion > tiempo_actual && !lista_eventos.empty()){
+        
         registro.print_estado_sistema(lista_eventos.top());
         registro.print_cola_eventos(lista_eventos);
 
         // Se recoje el evento superiro de la lsita que es el primero en tiempo que va a ocurrir
         Evento evento_actual = lista_eventos.top();
         lista_eventos.pop(); // se elmina una vez recojido
-
+        
 
         // RUTINA DE EVENTOS
         // aqui se procesa el evento hasta que es consumido

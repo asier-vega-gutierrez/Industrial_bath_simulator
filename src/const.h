@@ -9,6 +9,14 @@
     static const int LINEAR_CONGRUENTIAL_ENGINE = 1;
     static const int SUBTRACT_WITH_CARRY_ENGINE = 2;
     static const int MERSENNE_TWISTER_ENGINE = 3;
+
+    static const int EXPONENCIAL = 4;
+    static const int REAL = 5;
+    static const int NOMAL = 6;
+
+    static const int ENTERO = 7;
+    static const int BINOMIAL = 8;
+    static const int POISSON = 9;
     
 
 #endif
