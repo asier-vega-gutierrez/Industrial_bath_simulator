@@ -11,9 +11,9 @@ modelo:
     generador_tiempo: "MERSENNE_TWISTER_ENGINE"
     generador_lote: "LINEAR_CONGRUENTIAL_ENGINE"
     ditribucion_tiempo: 
-      tipo: "NORMAL"
-      alpha: 2.0
-      beta: 0.2
+      tipo: "ENTERO"
+      alpha: 1
+      beta: 2
     ditribucion_lote:
       tipo: "ENTERO"
       alpha: 1

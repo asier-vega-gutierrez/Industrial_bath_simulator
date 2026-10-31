@@ -47,8 +47,8 @@ int Config::get_generador(std::string str){
 int Config::get_ditribucion_timepo(std::string str){
     if(!str.compare("EXPONENCIAL")) {
         return EXPONENCIAL;
-    } else if(!str.compare("REAL")){
-        return REAL;
+    } else if(!str.compare("ENTERO")){
+        return ENTERO;
     } else if(!str.compare("NORMAL")){
         return NORMAL;
     }

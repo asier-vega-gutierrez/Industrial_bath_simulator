@@ -25,8 +25,8 @@ void Entrada::generar_eventos(ColaEventos& lista, double tiempo_simulacion) {
             case EXPONENCIAL: 
                 tiempo_hasta_siguiente = gen_tiempo.exponencial(as_double(this->alpha_tiempo));
             break;
-            case REAL:
-                tiempo_hasta_siguiente = gen_tiempo.real(as_double(this->alpha_tiempo), as_double(this->beta_tiempo));
+            case ENTERO:
+                tiempo_hasta_siguiente = gen_tiempo.entero(as_int(this->alpha_tiempo), as_int(this->beta_tiempo));
             break;
             case NORMAL:
                 tiempo_hasta_siguiente = gen_tiempo.normal(as_double(this->alpha_tiempo), as_double(this->beta_tiempo));

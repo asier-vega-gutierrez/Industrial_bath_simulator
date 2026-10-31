@@ -1,8 +1,6 @@
 #include "generador.h"
 
 
-// Generadores de tiempo
-
 // exponencial (Genera segun una frecuencia de aparicion de eventos)
 double Generador::exponencial(double frecuencia){
     std::exponential_distribution<double> dist(frecuencia);
@@ -10,25 +8,15 @@ double Generador::exponencial(double frecuencia){
     return std::visit([&](auto& arg) { return dist(arg); }, motor);
 }
 
-// Real uniforme (Genera por unidad de tiempo 1 minuto una cantidad de eventos en min y max)
-double Generador::real(double min, double max) {
-    std::uniform_real_distribution<double> dist(min, max);
+// Entero uniforme (Genera eventos cada x minutos, donde x pertence al conjunto min max)
+int Generador::entero(int min, int max) {
+    std::uniform_int_distribution<int> dist(min, max);
     return std::visit([&](auto& arg) { return dist(arg); }, motor);
 }
 
 // Normal (Genera eventos cada "media" minutos con una desviacion)
 double Generador::normal(double media, double desviacion_estandar) {
     std::normal_distribution<double> dist(media, desviacion_estandar);
-    return std::visit([&](auto& arg) { return dist(arg); }, motor);
-}
-
-
-
-// Generadores de lotes
-
-// Entero uniforme
-int Generador::entero(int min, int max) {
-    std::uniform_int_distribution<int> dist(min, max);
     return std::visit([&](auto& arg) { return dist(arg); }, motor);
 }
 

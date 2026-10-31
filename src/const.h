@@ -11,9 +11,7 @@
     static const int MERSENNE_TWISTER_ENGINE = 3;
 
     static const int EXPONENCIAL = 4;
-    static const int REAL = 5;
     static const int NORMAL = 6;
-
     static const int ENTERO = 7;
     static const int BINOMIAL = 8;
     static const int POISSON = 9;

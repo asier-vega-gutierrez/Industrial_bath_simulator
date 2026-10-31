@@ -25,7 +25,7 @@ class Entrada {
     public:
 
         Entrada(int id, double tiempo_generacion, int semilla, int generador_tiempo, int generador_lote, int distribucion_tiempo, int distribucion_lote, 
-            std::variant<int, double> alpha_tiempo, std::variant<int, double> beta_tiempo, std::variant<int, double> alpha_lote, std::variant<int, double> beta_lote ){
+            std::variant<int, double> alpha_tiempo, std::variant<int, double> beta_tiempo, std::variant<int, double> alpha_lote, std::variant<int, double> beta_lote){
 
             this->id = id;
             this->tiempo_generacion = tiempo_generacion;
