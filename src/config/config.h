@@ -17,7 +17,9 @@ class Config {
     private:
         YAML::Node config;
 
-        int get_generador(std::string);
+        int get_generador(std::string str);
+        int get_ditribucion_timepo(std::string str);
+        int get_ditribucion_lote(std::string str);
 
     public:
 

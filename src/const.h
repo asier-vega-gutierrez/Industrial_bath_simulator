@@ -12,7 +12,7 @@
 
     static const int EXPONENCIAL = 4;
     static const int REAL = 5;
-    static const int NOMAL = 6;
+    static const int NORMAL = 6;
 
     static const int ENTERO = 7;
     static const int BINOMIAL = 8;

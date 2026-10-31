@@ -74,6 +74,7 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<M
             // Se fuerza la finalizacion
             tiempo_actual = tiempo_simulacion;
         }
+
     }
 
     registro.print_finalizar();

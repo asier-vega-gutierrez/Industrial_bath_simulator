@@ -17,24 +17,55 @@ std::vector<Entrada> Config::get_entradas() {
         if (elm["tipo"].as<std::string>() == "entrada"){
             int generador_tiempo = get_generador(elm["generador_tiempo"].as<std::string>());
             int generador_lote = get_generador(elm["generador_lote"].as<std::string>());
-            Entrada entrada = Entrada(elm["id"].as<int>(), elm["tiempo_generacion"].as<double>(), this->get_semilla(), generador_tiempo, generador_lote, elm["lambda"].as<double>(), 0.1);
+            int distribucion_tiempo = get_ditribucion_timepo(elm["ditribucion_tiempo"]["tipo"].as<std::string>());
+            int distribucion_lote = get_ditribucion_lote(elm["ditribucion_lote"]["tipo"].as<std::string>());
+            // Lectura segura de alpha y beta para el tiempo (con valor por defecto 0.0 si no existen)
+            double alpha_tiempo = elm["ditribucion_tiempo"]["alpha"] ? elm["ditribucion_tiempo"]["alpha"].as<double>() : 0.0;
+            double beta_tiempo = elm["ditribucion_tiempo"]["beta"] ? elm["ditribucion_tiempo"]["beta"].as<double>() : 0.0;
+            // Lectura segura de alpha y beta para el lote (con valor por defecto 0.0 si no existen)
+            double alpha_lote = elm["ditribucion_lote"]["alpha"] ? elm["ditribucion_lote"]["alpha"].as<double>() : 0.0;
+            double beta_lote = elm["ditribucion_lote"]["beta"] ? elm["ditribucion_lote"]["beta"].as<double>() : 0.0;
+            Entrada entrada = Entrada(elm["id"].as<int>(), elm["tiempo_generacion"].as<double>(), this->get_semilla(), generador_tiempo, generador_lote, distribucion_tiempo, distribucion_lote, alpha_tiempo, beta_tiempo, alpha_lote, beta_lote);
             lista.push_back(entrada);
         }
     }
     return lista;
 }
 
-int Config::get_generador(std::string generador_str){
-    if(!generador_str.compare("LINEAR_CONGRUENTIAL_ENGINE")) {
+int Config::get_generador(std::string str){
+    if(!str.compare("LINEAR_CONGRUENTIAL_ENGINE")) {
         return LINEAR_CONGRUENTIAL_ENGINE;
-    } else if(!generador_str.compare("SUBTRACT_WITH_CARRY_ENGINE")){
+    } else if(!str.compare("SUBTRACT_WITH_CARRY_ENGINE")){
         return SUBTRACT_WITH_CARRY_ENGINE;
-    } else if(!generador_str.compare("MERSENNE_TWISTER_ENGINE")){
+    } else if(!str.compare("MERSENNE_TWISTER_ENGINE")){
         return MERSENNE_TWISTER_ENGINE;
     }
 
-    // Evita retornar un valor indefinido cuando la configuración no incluye un tipo soportado.
     return LINEAR_CONGRUENTIAL_ENGINE;
+}
+
+int Config::get_ditribucion_timepo(std::string str){
+    if(!str.compare("EXPONENCIAL")) {
+        return EXPONENCIAL;
+    } else if(!str.compare("REAL")){
+        return REAL;
+    } else if(!str.compare("NORMAL")){
+        return NORMAL;
+    }
+
+    return EXPONENCIAL;
+}
+
+int Config::get_ditribucion_lote(std::string str){
+    if(!str.compare("ENTERO")) {
+        return ENTERO;
+    } else if(!str.compare("BINOMIAL")){
+        return BINOMIAL;
+    } else if(!str.compare("POISSON")){
+        return POISSON;
+    }
+
+    return ENTERO;
 }
 
 

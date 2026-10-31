@@ -5,33 +5,32 @@ simulacion:
 
 modelo:
   entidades:
-
-  # - tipo: "entrada"
-  #   id: 0
-  #   generador_tiempo: "LINEAR_CONGRUENTIAL_ENGINE"
-  #   generador_lote: "LINEAR_CONGRUENTIAL_ENGINE"
-  #   ditribucion_tiempo: 
-  #     tipo: "EXPONENCIAL"
-  #     frecuencia: 0.2
-  #   ditribucion_lotes:
-  #     tipo: "ENTERO"
-  #     max: 3
-  #     min: 1
-  #   lambda: 0.2
-  #   tiempo_generacion: 15.0
     
   - tipo: "entrada"
     id: 0
-    generador_tiempo: "LINEAR_CONGRUENTIAL_ENGINE"
+    generador_tiempo: "MERSENNE_TWISTER_ENGINE"
     generador_lote: "LINEAR_CONGRUENTIAL_ENGINE"
-    lambda: 0.2
+    ditribucion_tiempo: 
+      tipo: "NORMAL"
+      alpha: 2.0
+      beta: 0.2
+    ditribucion_lote:
+      tipo: "ENTERO"
+      alpha: 1
+      beta: 3
     tiempo_generacion: 15.0
 
   - tipo: "entrada"
     id: 1
-    generador_tiempo: "LINEAR_CONGRUENTIAL_ENGINE"
+    generador_tiempo: "MERSENNE_TWISTER_ENGINE"
     generador_lote: "LINEAR_CONGRUENTIAL_ENGINE"
-    lambda: 0.2
+    ditribucion_tiempo: 
+      tipo: "EXPONENCIAL"
+      alpha: 0.3
+    ditribucion_lote:
+      tipo: "ENTERO"
+      alpha: 1
+      beta: 1
     tiempo_generacion: 15.0
 
   - tipo: "maquina"

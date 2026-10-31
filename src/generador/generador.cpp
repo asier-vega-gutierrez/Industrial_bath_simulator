@@ -3,20 +3,20 @@
 
 // Generadores de tiempo
 
-// exponencial (lambda = frecuencia)
+// exponencial (Genera segun una frecuencia de aparicion de eventos)
 double Generador::exponencial(double frecuencia){
     std::exponential_distribution<double> dist(frecuencia);
     // std::visit aplica la distribución al motor que esté activo
     return std::visit([&](auto& arg) { return dist(arg); }, motor);
 }
 
-// Real uniforme
+// Real uniforme (Genera por unidad de tiempo 1 minuto una cantidad de eventos en min y max)
 double Generador::real(double min, double max) {
     std::uniform_real_distribution<double> dist(min, max);
     return std::visit([&](auto& arg) { return dist(arg); }, motor);
 }
 
-// Normal (Gaussian)
+// Normal (Genera eventos cada "media" minutos con una desviacion)
 double Generador::normal(double media, double desviacion_estandar) {
     std::normal_distribution<double> dist(media, desviacion_estandar);
     return std::visit([&](auto& arg) { return dist(arg); }, motor);
