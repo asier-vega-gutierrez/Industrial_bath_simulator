@@ -26,7 +26,7 @@ void Entrada::generar_eventos(ColaEventos& lista, double tiempo_simulacion) {
                 tiempo_hasta_siguiente = gen_tiempo.exponencial(as_double(this->alpha_tiempo));
             break;
             case ENTERO:
-                tiempo_hasta_siguiente = gen_tiempo.entero(as_int(this->alpha_tiempo), as_int(this->beta_tiempo));
+                tiempo_hasta_siguiente = gen_tiempo.real(as_double(this->alpha_tiempo), as_double(this->beta_tiempo));
             break;
             case NORMAL:
                 tiempo_hasta_siguiente = gen_tiempo.normal(as_double(this->alpha_tiempo), as_double(this->beta_tiempo));
@@ -49,10 +49,10 @@ void Entrada::generar_eventos(ColaEventos& lista, double tiempo_simulacion) {
                     tamano_lote = gen_lote.poisson(as_int(this->alpha_lote));
                 break;
             }
-            // for (int i = 0; i < tamano_lote; ++i) {
+            for (int i = 0; i < tamano_lote; ++i) {
                 // inserta el evento en la posición correcta según su tiempo
                 lista.push(Evento(this->id, EXTERNO, tiempo_actual));
-            // }
+            }
         }
     }
 

@@ -49,12 +49,12 @@ class Generador {
 
         // exponencial (lambda = frecuencia)
         double exponencial(double frecuencia);
-        // Entero uniforme
-        int entero(int min, int max);
         // Real uniforme
         double real(double min, double max);
         // Normal / Gaussiana (media, desviación estándar)
         double normal(double media, double desviacion_estandar);
+        // Entero uniforme
+        int entero(int min, int max);
         // Binomial (t = número de ensayos, p = probabilidad de éxito)
         int binomial(int t, double p);
         // Poisson (lambda = media esperada)
