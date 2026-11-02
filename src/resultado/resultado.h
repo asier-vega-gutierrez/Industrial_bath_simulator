@@ -28,7 +28,8 @@ class Resultado {
         std::vector<Evento> eventos_finales = {}; //eventos finales que no se han procesado
         std::vector<Evento> eventos_procesados = {}; //eventos que si se han procesado
         std::vector<Evento> eventos_sinprocesar = {}; //eventos que no se han podio procesar
-        Registro registro = Registro();
+        Registro registro = Registro(RUTA_REGISTRO);
+        Registro informe = Registro(RUTA_INFORME);
 
         int count_vector_tipo_evento(std::vector<Evento> lista,int tipo);
 

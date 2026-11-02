@@ -21,7 +21,7 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<E
     resultado.almacenar_inicial(lista_eventos);
 
     // Registro de actividad para monstrar toda la informacion durante la ejecucion
-    Registro registro = Registro();
+    Registro registro = Registro(RUTA_REGISTRO);
     registro.print_iniciar();
     
     // La simulacion termina si se excede el tiempo de simulacion

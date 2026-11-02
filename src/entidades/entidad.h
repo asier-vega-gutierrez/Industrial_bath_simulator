@@ -10,7 +10,7 @@ class Entidad {
 
     protected: // permite que las clases hija si accedan
         int id = 0;
-        Registro registro = Registro();
+        Registro registro = Registro(RUTA_REGISTRO);
 
     public:
         Entidad(int id){

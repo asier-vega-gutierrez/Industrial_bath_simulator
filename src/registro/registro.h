@@ -1,5 +1,7 @@
 
 #include "../evento/evento.h"
+#include <fstream>
+#include "../const.h"
 
 #ifndef REGISTRO_H
 #define REGISTRO_H
@@ -12,9 +14,16 @@ class Registro {
         const char* cabecera_accion = "--> "; //si se llama desde el registro de una entidad
         const char* cabecera_resultado = "--{ "; //si se llama desde el registro de los resultados
 
+        void escribir(const std::string& mensaje);
+        void vaciar();
+        const char* ruta = "";
+
     public:
 
-        Registro() = default;
+        Registro(const char* ruta){
+            this->ruta = ruta;
+        }
+        ~Registro() = default;
 
         void print_iniciar();
         void print_finalizar();

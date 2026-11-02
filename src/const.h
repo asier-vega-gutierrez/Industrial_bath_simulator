@@ -16,6 +16,9 @@
     static const int ENTERO = 7;
     static const int BINOMIAL = 8;
     static const int POISSON = 9;
+
+    static const char* RUTA_REGISTRO = "../output/registro.txt";
+    static const char* RUTA_INFORME = "../output/informe.txt";
     
 
 #endif
