@@ -1,6 +1,7 @@
 
 #include "../evento/evento.h"
 #include "../registro/registro.h"
+#include "../entidades/entrada.h"
 #include "../entidades/salida.h"
 #include "../entidades/maquina.h"
 #include "../const.h"
@@ -18,6 +19,7 @@ class Resultado {
     private:
 
         double tiempo_simulacion = 0.0;
+        const std::vector<Entrada>& lista_entradas;
         const std::vector<Salida>& lista_salidas;
         const std::vector<Maquina>& lista_maquinas;
 
@@ -33,8 +35,8 @@ class Resultado {
     public:
 
         //Las entidades llegan solo como referencia de solo lectura
-        Resultado(double tiempo_simulacion, const std::vector<Salida>& lista_salidas, const std::vector<Maquina>& lista_maquinas) 
-            : lista_salidas(lista_salidas), lista_maquinas(lista_maquinas){
+        Resultado(double tiempo_simulacion, const std::vector<Entrada>& lista_entradas, const std::vector<Maquina>& lista_maquinas, const std::vector<Salida>& lista_salidas) 
+            : lista_entradas(lista_entradas), lista_maquinas(lista_maquinas), lista_salidas(lista_salidas){
             this->tiempo_simulacion = tiempo_simulacion;
         }
 

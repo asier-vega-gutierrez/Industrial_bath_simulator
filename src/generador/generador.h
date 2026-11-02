@@ -15,6 +15,8 @@ class Generador {
         std::random_device rd;
         // esto almacena los tres motores posibles que se van a utilizar
         std::variant<std::minstd_rand, std::mt19937, std::ranlux48> motor;
+        //Semilla del motor
+        unsigned int semilla = 0;
 
         // Función auxiliar para inicializar el motor según el tipo y la semilla
         // Constructor: 1 = LCG, 2 = Ranlux, 3 = Mersenne Twister
@@ -39,13 +41,12 @@ class Generador {
 
         // Constructor: por hardware (entropía) o con semilla fija (para tests)
         Generador(int tipo, unsigned int semilla){
-            if(semilla == 0){
-                inicializar_motor(tipo, this->rd());
-            }else{
-                inicializar_motor(tipo, semilla);
-            }
+            this->semilla = (semilla == 0) ? this->rd() : semilla;
+            // printf("%u \n", this->semilla);
+            inicializar_motor(tipo, this->semilla);
         }
 
+        unsigned int get_semilla() const{return this->semilla;}
 
         // exponencial (lambda = frecuencia)
         double exponencial(double frecuencia);

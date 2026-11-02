@@ -5,11 +5,6 @@ double Config::get_tiempo_simulacion() {
     return config["simulacion"]["tiempo_simulacion"].as<double>();
 }
 
-unsigned int Config::get_semilla() {
-    return config["simulacion"]["semilla"].as<int>();
-}
-
-
 std::vector<Entrada> Config::get_entradas() {
     std::vector<Entrada> lista;
     const auto& elementos = config["modelo"]["entidades"];
@@ -25,7 +20,7 @@ std::vector<Entrada> Config::get_entradas() {
             // Lectura segura de alpha y beta para el lote (con valor por defecto 0.0 si no existen)
             double alpha_lote = elm["ditribucion_lote"]["alpha"] ? elm["ditribucion_lote"]["alpha"].as<double>() : 0.0;
             double beta_lote = elm["ditribucion_lote"]["beta"] ? elm["ditribucion_lote"]["beta"].as<double>() : 0.0;
-            Entrada entrada = Entrada(elm["id"].as<int>(), elm["tiempo_generacion"].as<double>(), this->get_semilla(), generador_tiempo, generador_lote, distribucion_tiempo, distribucion_lote, alpha_tiempo, beta_tiempo, alpha_lote, beta_lote);
+            Entrada entrada = Entrada(elm["id"].as<int>(), elm["tiempo_generacion"].as<double>(), elm["semilla"].as<unsigned int>(), generador_tiempo, generador_lote, distribucion_tiempo, distribucion_lote, alpha_tiempo, beta_tiempo, alpha_lote, beta_lote);
             lista.push_back(entrada);
         }
     }

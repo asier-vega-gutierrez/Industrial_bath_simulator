@@ -12,12 +12,12 @@
 #include <array>
 
 // Se ocupa de llamar a los subprogramas que realizan la simulacion
-void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Maquina> lista_maquinas, std::vector<Salida>& lista_salidas){
+void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Entrada>& lista_entradas, std::vector<Maquina>& lista_maquinas, std::vector<Salida>& lista_salidas){
 
     double tiempo_actual = 0.0;
 
     // Esto alamcena la informacion durante la ejecucion para despues obtener la solucion de la simulacion
-    Resultado resultado = Resultado(tiempo_simulacion, lista_salidas, lista_maquinas);
+    Resultado resultado = Resultado(tiempo_simulacion, lista_entradas, lista_maquinas, lista_salidas);
     resultado.almacenar_inicial(lista_eventos);
 
     // Registro de actividad para monstrar toda la informacion durante la ejecucion
@@ -98,12 +98,14 @@ void inicializacion(Config config){
     // Declaración de la cola de prioridad de eventos
     ColaEventos lista_eventos;
     // Generacion de todos los enventos externos
-    for(Entrada entrada : lista_entradas){
+    for(Entrada& entrada : lista_entradas){
         entrada.generar_eventos(lista_eventos, entrada.get_tiempo_generacion());
     }
 
     // El ultimo paso de la inizacion es llamar al monitor para que comience la simulacion
-    monitor(lista_eventos, config.get_tiempo_simulacion(), lista_maquinas, lista_salidas);
+    monitor(lista_eventos, config.get_tiempo_simulacion(), lista_entradas, lista_maquinas, lista_salidas);
+
+    
 
 }
 

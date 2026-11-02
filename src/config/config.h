@@ -33,7 +33,6 @@ class Config {
         std::vector<Salida> get_salidas();
 
         double get_tiempo_simulacion();
-        unsigned int get_semilla();
 
 };
 

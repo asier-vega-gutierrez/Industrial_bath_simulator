@@ -38,6 +38,8 @@ void Resultado::almacenar_final(ColaEventos lista_eventos){
 
 void Resultado::procesar(){
 
+
+
     int count_eventos_ext = count_vector_tipo_evento(eventos_lista_completa, EXTERNO);
     int count_eventos_finales_ext = count_vector_tipo_evento(eventos_finales, EXTERNO);
     int count_eventos_sinprocesar_ext = count_vector_tipo_evento(eventos_sinprocesar, EXTERNO);
@@ -81,6 +83,11 @@ void Resultado::procesar(){
         double em = (maquina.get_tiempo_produciendo()/this->tiempo_simulacion) * 100.0;
         printf("Eficiencia de la maquina %d es: %f % \n", maquina.get_id(), em);
         printf("El timepo que ha estado parada %d es: %.2f minutos \n", maquina.get_id(), maquina.get_tiempo_sinproducir());
+    }
+
+    // Las semillas utilizadas para cada entrada
+    for(const Entrada& entrada : this->lista_entradas){
+        printf("La semilla de la entrada %d, es %u \n", entrada.get_id(), entrada.get_semilla());
     }
 
 

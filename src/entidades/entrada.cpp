@@ -2,7 +2,9 @@
 
 void Entrada::generar_eventos(ColaEventos& lista, double tiempo_simulacion) {
 
+
     Generador gen_tiempo = Generador(this->generador_tiempo, this->semilla);
+    this->semilla = gen_tiempo.get_semilla();
     Generador gen_lote = Generador(this->generador_lote, this->semilla);
 
     double tiempo_actual = 0.0;

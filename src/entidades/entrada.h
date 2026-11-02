@@ -45,6 +45,7 @@ class Entrada {
         int get_id() const {return this->id;}
         double get_tiempo_generacion() const {return this->tiempo_generacion;}
         void generar_eventos(ColaEventos& lista, double tiempo_simulacion);
+        unsigned int get_semilla() const {return this->semilla;}
 
 };
 
