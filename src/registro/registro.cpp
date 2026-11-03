@@ -43,9 +43,7 @@ void Registro::print_cola_eventos(ColaEventos cola) {
     std::string msg = "--- Lista de eventos: \n";
     while (!copia.empty()) {
         Evento ev = copia.top();
-        msg += "> origen: " + std::to_string(ev.get_origen()) + 
-               " tipo: " + std::to_string(ev.get_tipo()) + 
-               " tiempo: " + std::to_string(ev.get_tiempo()) + "\n";
+        msg += "> origen: " + std::to_string(ev.get_origen()) + " tipo: " + std::to_string(ev.get_tipo()) + " tiempo: " + std::to_string(ev.get_tiempo()) + "\n";
         copia.pop();
     }
     this->escribir(msg);
