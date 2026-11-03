@@ -51,11 +51,9 @@ bool Maquina::actualizar_estado(Evento evento, ColaEventos& lista_eventos, doubl
 
     // 4. Si la máquina NO está bloqueada, procedemos a consumir de las colas solo si el estado está libre
     colas[indice].get_event();
-    // TODO solo pasar un msg no dos
-    std::string msg = "--> Evento eliminado de la cola de maquina " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
-    registro.escribir(msg);
     estados[indice] = true;
-    msg = "--> Maquina " + std::to_string(id) + " actualiza su estado\n";
+    std::string msg = "--> Evento eliminado de la cola de maquina " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
+    msg += "--> Maquina " + std::to_string(id) + " actualiza su estado\n";
     registro.escribir(msg);
 
     // 5. Solo si todos los estados son True se genera un evento
