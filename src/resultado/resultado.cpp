@@ -21,7 +21,13 @@ void Resultado::almacenar_iteracion(bool evento_procesado, Evento evento){
         this->eventos_sinprocesar.push_back(evento);
     }
     // Se escribe un aviso para que esta accion quede registrada
-    this->registro.print_resultado_iteracion(evento_procesado);
+    std::string msg = "";
+    if (evento_procesado) {
+        msg = "--{ Evento actual procesado \n";
+    } else {
+        msg = "--{ Evento actual NO procesado \n";
+    }
+    registro.escribir(msg);
 }
 
 // Almacena la lista de eventos final
@@ -38,7 +44,7 @@ void Resultado::almacenar_final(ColaEventos lista_eventos){
 
 void Resultado::procesar(){
 
-
+    informe.print_iniciar_informe();
 
     int count_eventos_ext = count_vector_tipo_evento(eventos_lista_completa, EXTERNO);
     int count_eventos_finales_ext = count_vector_tipo_evento(eventos_finales, EXTERNO);
@@ -55,7 +61,6 @@ void Resultado::procesar(){
     int count_eventos_int = count_vector_tipo_evento(eventos_lista_completa, INTERNO);
     int count_eventos_finales_int = count_vector_tipo_evento(eventos_finales, INTERNO);
     int count_eventos_sinprocesar_int = count_vector_tipo_evento(eventos_sinprocesar, INTERNO);
-
     // Porcentaje de los eventos INTERNOS procesados y no (TODO que pasa con los de tipo 3 ????)
     double eisp = (double)count_eventos_sinprocesar_int / (count_eventos_int - count_eventos_finales_int);
     printf("Cantidad de eventos INTERNOs procesados: %d\n", count_eventos_int - count_eventos_finales_int - count_eventos_sinprocesar_int);

@@ -22,12 +22,15 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<E
 
     // Registro de actividad para monstrar toda la informacion durante la ejecucion
     Registro registro = Registro(RUTA_REGISTRO);
-    registro.print_iniciar();
+    registro.print_iniciar_simulacion();
     
     // La simulacion termina si se excede el tiempo de simulacion
     while (tiempo_simulacion > tiempo_actual && !lista_eventos.empty()){
         
-        registro.print_estado_sistema(lista_eventos.top());
+        std::string msg = "---------------------------------------------------------\n";
+        msg += "--- Nueva iteracion de simulacion \n";
+        msg += "--- El evento actual es: " + std::to_string(lista_eventos.top().get_origen()) + " " + std::to_string(lista_eventos.top().get_tipo()) + " " + std::to_string(lista_eventos.top().get_tiempo()) + " \n";
+        registro.escribir(msg);
         registro.print_cola_eventos(lista_eventos);
 
         // Se recoje el evento superiro de la lsita que es el primero en tiempo que va a ocurrir
@@ -54,7 +57,8 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<E
             for (Salida& salida : lista_salidas){
                 // Si la salida consume el evento devolvemos true y salimos
                 if (salida.recoger_evento(evento_actual)) {
-                    registro.print_evento_salida();
+                    std::string msg = "--- Evento de salida detectado \n";
+                    registro.escribir(msg);
                     evento_procesado = true;
                     break; // El evento ya fue consumido
                 }
@@ -77,7 +81,10 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<E
 
     }
 
-    registro.print_finalizar();
+    std::string msg = "--- La simulacion de este experimento a terminado\n";
+    msg += "++++++++++++++++++++++++++++++++++++++++++++++++\n";
+    registro.escribir(msg);
+
 
     // Al final se almacena informacion relevante
     resultado.almacenar_final(lista_eventos);

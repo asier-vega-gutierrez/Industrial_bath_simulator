@@ -2,13 +2,20 @@
 --- La simulacion de este experimento a comenzado
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 1 1 2.990431 
+--- El evento actual es: 1 1 2.039509 
 --- Lista de eventos: 
-> origen: 1 tipo: 1 tiempo: 2.990431
-> origen: 1 tipo: 1 tiempo: 7.243084
-> origen: 0 tipo: 1 tiempo: 11.285277
-> origen: 0 tipo: 1 tiempo: 11.285277
-> origen: 1 tipo: 1 tiempo: 12.627328
+> origen: 1 tipo: 1 tiempo: 2.039509
+> origen: 1 tipo: 1 tiempo: 3.729125
+> origen: 1 tipo: 1 tiempo: 4.377994
+> origen: 0 tipo: 1 tiempo: 5.846513
+> origen: 0 tipo: 1 tiempo: 5.846513
+> origen: 1 tipo: 1 tiempo: 6.597628
+> origen: 1 tipo: 1 tiempo: 7.789647
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
 --> Evento anadido a la cola de maquina 3, cola con 1 eventos 
 --> Evento eliminado de la cola de maquina 3, cola con 0 eventos 
 --> Maquina 3 actualiza su estado
@@ -16,36 +23,56 @@
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 1 1 7.243084 
+--- El evento actual es: 1 1 3.729125 
 --- Lista de eventos: 
-> origen: 1 tipo: 1 tiempo: 7.243084
+> origen: 1 tipo: 1 tiempo: 3.729125
+> origen: 1 tipo: 1 tiempo: 4.377994
+> origen: 0 tipo: 1 tiempo: 5.846513
+> origen: 0 tipo: 1 tiempo: 5.846513
+> origen: 1 tipo: 1 tiempo: 6.597628
+> origen: 1 tipo: 1 tiempo: 7.789647
 > origen: 3 tipo: 2 tiempo: 10.000000
-> origen: 0 tipo: 1 tiempo: 11.285277
-> origen: 0 tipo: 1 tiempo: 11.285277
-> origen: 1 tipo: 1 tiempo: 12.627328
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
 --> Evento anadido a la cola de maquina 3, cola con 1 eventos 
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 3 2 10.000000 
+--- El evento actual es: 1 1 4.377994 
 --- Lista de eventos: 
+> origen: 1 tipo: 1 tiempo: 4.377994
+> origen: 0 tipo: 1 tiempo: 5.846513
+> origen: 0 tipo: 1 tiempo: 5.846513
+> origen: 1 tipo: 1 tiempo: 6.597628
+> origen: 1 tipo: 1 tiempo: 7.789647
 > origen: 3 tipo: 2 tiempo: 10.000000
-> origen: 0 tipo: 1 tiempo: 11.285277
-> origen: 0 tipo: 1 tiempo: 11.285277
-> origen: 1 tipo: 1 tiempo: 12.627328
-> origen: 1 tipo: 3 tiempo: 17.243084
---> Evento anadido a la cola de maquina 4, cola con 1 eventos 
---> Evento eliminado de la cola de maquina 4, cola con 0 eventos 
---> Maquina 4 actualiza su estado
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+--> Evento anadido a la cola de maquina 3, cola con 2 eventos 
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 0 1 11.285277 
+--- El evento actual es: 0 1 5.846513 
 --- Lista de eventos: 
-> origen: 0 tipo: 1 tiempo: 11.285277
-> origen: 0 tipo: 1 tiempo: 11.285277
-> origen: 1 tipo: 1 tiempo: 12.627328
-> origen: 1 tipo: 3 tiempo: 17.243084
+> origen: 0 tipo: 1 tiempo: 5.846513
+> origen: 0 tipo: 1 tiempo: 5.846513
+> origen: 1 tipo: 1 tiempo: 6.597628
+> origen: 1 tipo: 1 tiempo: 7.789647
+> origen: 3 tipo: 2 tiempo: 10.000000
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
 --> Evento anadido a la cola de maquina 2, cola con 1 eventos 
 --> Evento eliminado de la cola de maquina 2, cola con 0 eventos 
 --> Maquina 2 actualiza su estado
@@ -53,57 +80,299 @@
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 0 1 11.285277 
+--- El evento actual es: 0 1 5.846513 
 --- Lista de eventos: 
-> origen: 0 tipo: 1 tiempo: 11.285277
-> origen: 1 tipo: 1 tiempo: 12.627328
-> origen: 1 tipo: 3 tiempo: 17.243084
-> origen: 2 tipo: 2 tiempo: 21.285277
+> origen: 0 tipo: 1 tiempo: 5.846513
+> origen: 1 tipo: 1 tiempo: 6.597628
+> origen: 1 tipo: 1 tiempo: 7.789647
+> origen: 3 tipo: 2 tiempo: 10.000000
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 2 tipo: 2 tiempo: 15.846513
 --> Evento anadido a la cola de maquina 2, cola con 1 eventos 
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 1 1 12.627328 
+--- El evento actual es: 1 1 6.597628 
 --- Lista de eventos: 
-> origen: 1 tipo: 1 tiempo: 12.627328
-> origen: 1 tipo: 3 tiempo: 17.243084
-> origen: 2 tipo: 2 tiempo: 21.285277
-> origen: 0 tipo: 3 tiempo: 21.285277
---> Evento anadido a la cola de maquina 3, cola con 2 eventos 
+> origen: 1 tipo: 1 tiempo: 6.597628
+> origen: 1 tipo: 1 tiempo: 7.789647
+> origen: 3 tipo: 2 tiempo: 10.000000
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 0 tipo: 3 tiempo: 15.846513
+--> Evento anadido a la cola de maquina 3, cola con 3 eventos 
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 1 1 7.789647 
+--- Lista de eventos: 
+> origen: 1 tipo: 1 tiempo: 7.789647
+> origen: 3 tipo: 2 tiempo: 10.000000
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 0 tipo: 3 tiempo: 15.846513
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+--- Cola de maquina 3 llena 
+--{ Evento actual NO procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 3 2 10.000000 
+--- Lista de eventos: 
+> origen: 3 tipo: 2 tiempo: 10.000000
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 0 tipo: 3 tiempo: 15.846513
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+--> Evento anadido a la cola de maquina 4, cola con 1 eventos 
+--> Evento eliminado de la cola de maquina 4, cola con 0 eventos 
+--> Maquina 4 actualiza su estado
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 0 1 11.411255 
+--- Lista de eventos: 
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 0 tipo: 3 tiempo: 15.846513
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+--> Evento anadido a la cola de maquina 2, cola con 2 eventos 
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 0 1 11.411255 
+--- Lista de eventos: 
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 0 tipo: 3 tiempo: 15.846513
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+> origen: 0 tipo: 3 tiempo: 21.411255
+--> Evento anadido a la cola de maquina 2, cola con 3 eventos 
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 0 1 11.411255 
+--- Lista de eventos: 
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 0 tipo: 3 tiempo: 15.846513
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 0 tipo: 3 tiempo: 21.411255
+--- Cola de maquina 2 llena 
+--{ Evento actual NO procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 0 1 11.411255 
+--- Lista de eventos: 
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 0 tipo: 3 tiempo: 15.846513
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 0 tipo: 3 tiempo: 21.411255
+--- Cola de maquina 2 llena 
+--{ Evento actual NO procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 0 1 11.411255 
+--- Lista de eventos: 
+> origen: 0 tipo: 1 tiempo: 11.411255
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 0 tipo: 3 tiempo: 15.846513
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 0 tipo: 3 tiempo: 21.411255
+--- Cola de maquina 2 llena 
+--{ Evento actual NO procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 1 3 13.729125 
+--- Lista de eventos: 
+> origen: 1 tipo: 3 tiempo: 13.729125
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 0 tipo: 3 tiempo: 15.846513
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 0 tipo: 3 tiempo: 21.411255
+--> Evento eliminado de la cola de maquina 3, cola con 2 eventos 
+--> Maquina 3 actualiza su estado
+--> Maquina 3 a generado un evento
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 1 3 14.377994 
+--- Lista de eventos: 
+> origen: 1 tipo: 3 tiempo: 14.377994
+> origen: 0 tipo: 3 tiempo: 15.846513
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 3 tipo: 2 tiempo: 23.729125
+--> Evento anadido de nuevo a la cola de maquina 3, cola con 2 eventos 
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 0 3 15.846513 
+--- Lista de eventos: 
+> origen: 0 tipo: 3 tiempo: 15.846513
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 3 tipo: 2 tiempo: 23.729125
+> origen: 1 tipo: 3 tiempo: 24.377994
+--> Evento eliminado de la cola de maquina 2, cola con 2 eventos 
+--> Maquina 2 actualiza su estado
+--> Maquina 2 a generado un evento
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 2 2 15.846513 
+--- Lista de eventos: 
+> origen: 2 tipo: 2 tiempo: 15.846513
+> origen: 1 tipo: 3 tiempo: 16.597628
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 3 tipo: 2 tiempo: 23.729125
+> origen: 1 tipo: 3 tiempo: 24.377994
+> origen: 2 tipo: 2 tiempo: 25.846513
+--> Evento anadido a la cola de maquina 4, cola con 1 eventos 
+--> Evento eliminado de la cola de maquina 4, cola con 0 eventos 
+--> Maquina 4 actualiza su estado
+--> Maquina 4 a generado un evento
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 1 3 16.597628 
+--- Lista de eventos: 
+> origen: 1 tipo: 3 tiempo: 16.597628
+> origen: 4 tipo: 2 tiempo: 18.846513
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 3 tipo: 2 tiempo: 23.729125
+> origen: 1 tipo: 3 tiempo: 24.377994
+> origen: 2 tipo: 2 tiempo: 25.846513
+--> Evento anadido de nuevo a la cola de maquina 3, cola con 2 eventos 
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 4 2 18.846513 
+--- Lista de eventos: 
+> origen: 4 tipo: 2 tiempo: 18.846513
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 3 tipo: 2 tiempo: 23.729125
+> origen: 1 tipo: 3 tiempo: 24.377994
+> origen: 2 tipo: 2 tiempo: 25.846513
+> origen: 1 tipo: 3 tiempo: 26.597628
+--- Evento de salida detectado 
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 0 3 21.411255 
+--- Lista de eventos: 
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 3 tipo: 2 tiempo: 23.729125
+> origen: 1 tipo: 3 tiempo: 24.377994
+> origen: 2 tipo: 2 tiempo: 25.846513
+> origen: 1 tipo: 3 tiempo: 26.597628
+--> Evento anadido de nuevo a la cola de maquina 2, cola con 2 eventos 
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 0 3 21.411255 
+--- Lista de eventos: 
+> origen: 0 tipo: 3 tiempo: 21.411255
+> origen: 3 tipo: 2 tiempo: 23.729125
+> origen: 1 tipo: 3 tiempo: 24.377994
+> origen: 2 tipo: 2 tiempo: 25.846513
+> origen: 1 tipo: 3 tiempo: 26.597628
+> origen: 0 tipo: 3 tiempo: 31.411255
+--> Evento anadido de nuevo a la cola de maquina 2, cola con 2 eventos 
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 3 2 23.729125 
+--- Lista de eventos: 
+> origen: 3 tipo: 2 tiempo: 23.729125
+> origen: 1 tipo: 3 tiempo: 24.377994
+> origen: 2 tipo: 2 tiempo: 25.846513
+> origen: 1 tipo: 3 tiempo: 26.597628
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 0 tipo: 3 tiempo: 31.411255
+--> Evento anadido a la cola de maquina 4, cola con 1 eventos 
+--> Evento eliminado de la cola de maquina 4, cola con 0 eventos 
+--> Maquina 4 actualiza su estado
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 1 3 24.377994 
+--- Lista de eventos: 
+> origen: 1 tipo: 3 tiempo: 24.377994
+> origen: 2 tipo: 2 tiempo: 25.846513
+> origen: 1 tipo: 3 tiempo: 26.597628
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 0 tipo: 3 tiempo: 31.411255
 --> Evento eliminado de la cola de maquina 3, cola con 1 eventos 
 --> Maquina 3 actualiza su estado
 --> Maquina 3 a generado un evento
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 1 3 17.243084 
+--- El evento actual es: 2 2 25.846513 
 --- Lista de eventos: 
-> origen: 1 tipo: 3 tiempo: 17.243084
-> origen: 0 tipo: 3 tiempo: 21.285277
-> origen: 2 tipo: 2 tiempo: 21.285277
-> origen: 3 tipo: 2 tiempo: 22.627328
---> Evento anadido de nuevo a la cola de maquina 3, cola con 1 eventos 
---{ Evento actual procesado 
----------------------------------------------------------
---- Nueva iteracion de simulacion 
---- El evento actual es: 0 3 21.285277 
---- Lista de eventos: 
-> origen: 0 tipo: 3 tiempo: 21.285277
-> origen: 2 tipo: 2 tiempo: 21.285277
-> origen: 3 tipo: 2 tiempo: 22.627328
-> origen: 1 tipo: 3 tiempo: 27.243084
---> Evento eliminado de la cola de maquina 2, cola con 0 eventos 
---> Maquina 2 actualiza su estado
---> Maquina 2 a generado un evento
---{ Evento actual procesado 
----------------------------------------------------------
---- Nueva iteracion de simulacion 
---- El evento actual es: 2 2 21.285277 
---- Lista de eventos: 
-> origen: 2 tipo: 2 tiempo: 21.285277
-> origen: 3 tipo: 2 tiempo: 22.627328
-> origen: 1 tipo: 3 tiempo: 27.243084
-> origen: 2 tipo: 2 tiempo: 31.285277
+> origen: 2 tipo: 2 tiempo: 25.846513
+> origen: 1 tipo: 3 tiempo: 26.597628
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 3 tipo: 2 tiempo: 34.377994
 --> Evento anadido a la cola de maquina 4, cola con 1 eventos 
 --> Evento eliminado de la cola de maquina 4, cola con 0 eventos 
 --> Maquina 4 actualiza su estado
@@ -111,50 +380,78 @@
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 3 2 22.627328 
+--- El evento actual es: 1 3 26.597628 
 --- Lista de eventos: 
-> origen: 3 tipo: 2 tiempo: 22.627328
-> origen: 4 tipo: 2 tiempo: 24.285277
-> origen: 1 tipo: 3 tiempo: 27.243084
-> origen: 2 tipo: 2 tiempo: 31.285277
---> Evento anadido a la cola de maquina 4, cola con 1 eventos 
+> origen: 1 tipo: 3 tiempo: 26.597628
+> origen: 4 tipo: 2 tiempo: 28.846513
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 3 tipo: 2 tiempo: 34.377994
+--> Evento anadido de nuevo a la cola de maquina 3, cola con 1 eventos 
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 4 2 24.285277 
+--- El evento actual es: 4 2 28.846513 
 --- Lista de eventos: 
-> origen: 4 tipo: 2 tiempo: 24.285277
-> origen: 3 tipo: 3 tiempo: 25.627328
-> origen: 1 tipo: 3 tiempo: 27.243084
-> origen: 2 tipo: 2 tiempo: 31.285277
+> origen: 4 tipo: 2 tiempo: 28.846513
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 3 tipo: 2 tiempo: 34.377994
+> origen: 1 tipo: 3 tiempo: 36.597628
 --- Evento de salida detectado 
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 3 3 25.627328 
+--- El evento actual es: 0 3 31.411255 
 --- Lista de eventos: 
-> origen: 3 tipo: 3 tiempo: 25.627328
-> origen: 1 tipo: 3 tiempo: 27.243084
-> origen: 2 tipo: 2 tiempo: 31.285277
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 3 tipo: 2 tiempo: 34.377994
+> origen: 1 tipo: 3 tiempo: 36.597628
+--> Evento eliminado de la cola de maquina 2, cola con 1 eventos 
+--> Maquina 2 actualiza su estado
+--> Maquina 2 a generado un evento
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 0 3 31.411255 
+--- Lista de eventos: 
+> origen: 0 tipo: 3 tiempo: 31.411255
+> origen: 3 tipo: 2 tiempo: 34.377994
+> origen: 1 tipo: 3 tiempo: 36.597628
+> origen: 2 tipo: 2 tiempo: 41.411255
+--> Evento anadido de nuevo a la cola de maquina 2, cola con 1 eventos 
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 3 2 34.377994 
+--- Lista de eventos: 
+> origen: 3 tipo: 2 tiempo: 34.377994
+> origen: 1 tipo: 3 tiempo: 36.597628
+> origen: 2 tipo: 2 tiempo: 41.411255
+> origen: 0 tipo: 3 tiempo: 41.411255
+--> Evento anadido a la cola de maquina 4, cola con 1 eventos 
 --> Evento eliminado de la cola de maquina 4, cola con 0 eventos 
 --> Maquina 4 actualiza su estado
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 1 3 27.243084 
+--- El evento actual es: 1 3 36.597628 
 --- Lista de eventos: 
-> origen: 1 tipo: 3 tiempo: 27.243084
-> origen: 2 tipo: 2 tiempo: 31.285277
+> origen: 1 tipo: 3 tiempo: 36.597628
+> origen: 2 tipo: 2 tiempo: 41.411255
+> origen: 0 tipo: 3 tiempo: 41.411255
 --> Evento eliminado de la cola de maquina 3, cola con 0 eventos 
 --> Maquina 3 actualiza su estado
 --> Maquina 3 a generado un evento
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 2 2 31.285277 
+--- El evento actual es: 2 2 41.411255 
 --- Lista de eventos: 
-> origen: 2 tipo: 2 tiempo: 31.285277
-> origen: 3 tipo: 2 tiempo: 37.243084
+> origen: 2 tipo: 2 tiempo: 41.411255
+> origen: 0 tipo: 3 tiempo: 41.411255
+> origen: 3 tipo: 2 tiempo: 46.597628
 --> Evento anadido a la cola de maquina 4, cola con 1 eventos 
 --> Evento eliminado de la cola de maquina 4, cola con 0 eventos 
 --> Maquina 4 actualiza su estado
@@ -162,20 +459,50 @@
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 4 2 34.285277 
+--- El evento actual es: 0 3 41.411255 
 --- Lista de eventos: 
-> origen: 4 tipo: 2 tiempo: 34.285277
-> origen: 3 tipo: 2 tiempo: 37.243084
+> origen: 0 tipo: 3 tiempo: 41.411255
+> origen: 4 tipo: 2 tiempo: 44.411255
+> origen: 3 tipo: 2 tiempo: 46.597628
+--> Evento eliminado de la cola de maquina 2, cola con 0 eventos 
+--> Maquina 2 actualiza su estado
+--> Maquina 2 a generado un evento
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 4 2 44.411255 
+--- Lista de eventos: 
+> origen: 4 tipo: 2 tiempo: 44.411255
+> origen: 3 tipo: 2 tiempo: 46.597628
+> origen: 2 tipo: 2 tiempo: 51.411255
 --- Evento de salida detectado 
 --{ Evento actual procesado 
 ---------------------------------------------------------
 --- Nueva iteracion de simulacion 
---- El evento actual es: 3 2 37.243084 
+--- El evento actual es: 3 2 46.597628 
 --- Lista de eventos: 
-> origen: 3 tipo: 2 tiempo: 37.243084
+> origen: 3 tipo: 2 tiempo: 46.597628
+> origen: 2 tipo: 2 tiempo: 51.411255
 --> Evento anadido a la cola de maquina 4, cola con 1 eventos 
 --> Evento eliminado de la cola de maquina 4, cola con 0 eventos 
 --> Maquina 4 actualiza su estado
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 2 2 51.411255 
+--- Lista de eventos: 
+> origen: 2 tipo: 2 tiempo: 51.411255
+--> Evento anadido a la cola de maquina 4, cola con 1 eventos 
+--> Evento eliminado de la cola de maquina 4, cola con 0 eventos 
+--> Maquina 4 actualiza su estado
+--> Maquina 4 a generado un evento
+--{ Evento actual procesado 
+---------------------------------------------------------
+--- Nueva iteracion de simulacion 
+--- El evento actual es: 4 2 54.411255 
+--- Lista de eventos: 
+> origen: 4 tipo: 2 tiempo: 54.411255
+--- Evento de salida detectado 
 --{ Evento actual procesado 
 --- La simulacion de este experimento a terminado
 ++++++++++++++++++++++++++++++++++++++++++++++++

@@ -10,11 +10,7 @@
 class Registro {
 
     private:
-        const char* cabecera_informacion = "--- "; //si se llama desde el registro del monitor
-        const char* cabecera_accion = "--> "; //si se llama desde el registro de una entidad
-        const char* cabecera_resultado = "--{ "; //si se llama desde el registro de los resultados
-
-        void escribir(const std::string& mensaje);
+        
         void vaciar();
         const char* ruta = "";
 
@@ -25,18 +21,11 @@ class Registro {
         }
         ~Registro() = default;
 
-        void print_iniciar();
-        void print_finalizar();
+
+        void escribir(const std::string& mensaje);
+        void print_iniciar_simulacion();
+        void print_iniciar_informe();
         void print_cola_eventos(ColaEventos cola);
-        void print_estado_sistema(Evento ev);
-        void print_resultado_iteracion(bool flag);
-        void print_entidad_estado(int id);
-        void print_entidad_generacion(int id);
-        void print_cola_llena(int id);
-        void print_anadir_cola(int id, int actual);
-        void print_anadir_denuevo_cola(int id, int actual);
-        void print_elminar_cola(int id, int actual);
-        void print_evento_salida();
 
     };
 

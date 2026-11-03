@@ -26,11 +26,12 @@ bool Maquina::actualizar_estado(Evento evento, ColaEventos& lista_eventos, doubl
     if (evento.get_tipo() != INTERRUPCION){
         if (!this->colas[indice].add_event(evento)) {
             // Cola llena, el evento no se puede procesar ni almacenar
-            // printf("--- Cola de maquina %d llena \n", this->id);
-            this->registro.print_cola_llena(this->id);
+            std::string msg = "--- Cola de maquina " + std::to_string(id) + " llena \n";
+            registro.escribir(msg);
             return false;
         } else {
-            this->registro.print_anadir_cola(this->id, this->colas[indice].get_count_cola_actual());
+            std::string msg = "--> Evento anadido a la cola de maquina " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
+            registro.escribir(msg);
         }
     }
 
@@ -42,21 +43,26 @@ bool Maquina::actualizar_estado(Evento evento, ColaEventos& lista_eventos, doubl
         // esto permite que el sistema actualice en el momento que se desbloque
         lista_eventos.push(Evento(evento.get_origen(), INTERRUPCION, tiempo_actual+this->tiempo));
         if (evento.get_tipo() == INTERRUPCION){
-            this->registro.print_anadir_denuevo_cola(this->id, this->colas[indice].get_count_cola_actual());
+            std::string msg = "--> Evento anadido de nuevo a la cola de maquina " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
+            registro.escribir(msg);
         }
         return true;
     }
 
     // 4. Si la máquina NO está bloqueada, procedemos a consumir de las colas solo si el estado está libre
     colas[indice].get_event();
-    this->registro.print_elminar_cola(this->id, this->colas[indice].get_count_cola_actual());
+    // TODO solo pasar un msg no dos
+    std::string msg = "--> Evento eliminado de la cola de maquina " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
+    registro.escribir(msg);
     estados[indice] = true;
-    this->registro.print_entidad_estado(this->id);
+    msg = "--> Maquina " + std::to_string(id) + " actualiza su estado\n";
+    registro.escribir(msg);
 
     // 5. Solo si todos los estados son True se genera un evento
     bool evento_listo = std::all_of(estados.begin(), estados.end(), [](bool v) { return v; });
     if(evento_listo){
-        this->registro.print_entidad_generacion(this->id);
+        std::string msg = "--> Maquina " + std::to_string(id) + " a generado un evento\n";
+        registro.escribir(msg);
         lista_eventos.push(Evento(this->id, INTERNO, tiempo_actual+this->tiempo));
         //si genera un evento la maquian se bloquea el tiempo que ejecute
         this->tiempo_bloqueo = tiempo_actual + this->tiempo;
