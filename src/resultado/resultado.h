@@ -20,8 +20,8 @@ class Resultado {
 
         double tiempo_simulacion = 0.0;
         const std::vector<Entrada>& lista_entradas;
-        const std::vector<Salida>& lista_salidas;
         const std::vector<Maquina>& lista_maquinas;
+        const std::vector<Salida>& lista_salidas;
 
         std::vector<Evento> eventos_lista_completa = {}; //lista completa de todos los eventos que han aparecido
         std::vector<Evento> eventos_iniciales = {}; //eventos generados de forma inicila (todo EXTERNOs)

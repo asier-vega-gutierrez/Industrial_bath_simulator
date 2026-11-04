@@ -48,6 +48,9 @@ class Cola {
         int max_cola = 0;
         int min_cola = 0;
 
+        int max_historico = 0;
+        int min_historico = 0;
+
     public:
 
         Cola() = default;
@@ -59,6 +62,10 @@ class Cola {
             if(count_cola_actual < max_cola){
                 cola.push(evento);
                 count_cola_actual += 1;
+                // Maximo historico de elementos en cola
+                if (count_cola_actual > max_historico) {
+                    max_historico = count_cola_actual;
+                }
                 return true;
             }else{
                 return false;
@@ -69,11 +76,18 @@ class Cola {
             Evento evento_usar = cola.top();
             cola.pop();
             count_cola_actual -= 1;
+            // Minimo historico de elementos en cola
+            if (count_cola_actual < min_historico) {
+                min_historico = count_cola_actual;
+            }
             return evento_usar;
         }
 
         int get_max_cola() const {return this->max_cola;}
         int get_count_cola_actual() const {return this->count_cola_actual;}
+        ColaEventos get_count_cola_eventos() const {return this->cola;}
+        int get_max_historico() const {return this->max_historico;} 
+        int get_min_historico() const {return this->min_historico;} 
 
 };
 

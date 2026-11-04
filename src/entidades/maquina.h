@@ -46,6 +46,7 @@ class Maquina: public Entidad {
         bool actualizar_estado(Evento evento, ColaEventos& lista_eventos, double tiempo_actual);
         double get_tiempo_produciendo() const {return this->tiempo_produciendo;}
         double get_tiempo_sinproducir() const {return this->tiempo_sinproducir;}
+        std::vector<int> get_relaciones() const {return this->relaciones;}
         std::vector<Cola> get_colas() const {return this->colas;}
 
 };

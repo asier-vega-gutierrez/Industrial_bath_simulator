@@ -34,7 +34,7 @@ void Registro::print_iniciar_simulacion() {
 void Registro::print_iniciar_informe() {
     vaciar();
     std::string msg = "";
-    msg += "INFORME DE SIMULACION:\n";
+    msg += "----- INFORME DE SIMULACION -----\n";
     this->escribir(msg);
 }
 
