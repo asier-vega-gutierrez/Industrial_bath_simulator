@@ -17,8 +17,8 @@
     static const int BINOMIAL = 8;
     static const int POISSON = 9;
 
-    static const char* RUTA_REGISTRO = "../output/registro.txt";
-    static const char* RUTA_INFORME = "../output/informe.txt";
+    inline const char* RUTA_REGISTRO = "../output/registro.txt";
+    inline const char* RUTA_INFORME = "../output/informe.txt";
     
 
 #endif

@@ -107,7 +107,7 @@ void Resultado::procesar(){
     msg = "";
     for(const Maquina& maquina : lista_maquinas_sortid){
         // for(const Cola& cola : maquina.get_colas()){
-        for(int i = 0; i < maquina.get_colas().size(); i++){
+        for(size_t i = 0; i < maquina.get_colas().size(); i++){
             msg += "Cantidad de eventos maxima de la maquina " + std::to_string(maquina.get_id()) + " para su cola de relacion " + std::to_string(maquina.get_relaciones()[i]) + " es de: " + std::to_string(maquina.get_colas()[i].get_max_historico()) + " \n";
             msg += "Cantidad de eventos minima de la maquina " + std::to_string(maquina.get_id()) + " para su cola de relacion " + std::to_string(maquina.get_relaciones()[i]) + " es de: " + std::to_string(maquina.get_colas()[i].get_min_historico()) + " \n";      
         }
