@@ -18,7 +18,7 @@ modelo:
     ditribucion_lote:
       tipo: "POISSON"
       alpha: 3
-    tiempo_generacion: 15.0
+    tiempo_generacion: 60.0
 
   - tipo: "entrada"
     id: 1
@@ -32,13 +32,13 @@ modelo:
       tipo: "ENTERO"
       alpha: 1
       beta: 1
-    tiempo_generacion: 15.0
+    tiempo_generacion: 60.0
 
   - tipo: "maquina"
     id: 2
     relaciones: [0]
     tiempo: 10.0
-    prioridad: 2
+    prioridad: 1
     cola: [3]
 
   - tipo: "maquina"

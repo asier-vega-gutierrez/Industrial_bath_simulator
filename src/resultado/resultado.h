@@ -27,11 +27,13 @@ class Resultado {
         std::vector<Evento> eventos_iniciales = {}; //eventos generados de forma inicila (todo EXTERNOs)
         std::vector<Evento> eventos_finales = {}; //eventos finales que no se han procesado
         std::vector<Evento> eventos_procesados = {}; //eventos que si se han procesado
-        std::vector<Evento> eventos_sinprocesar = {}; //eventos que no se han podio procesar
+        std::vector<Evento> eventos_sinprocesar = {}; //eventos que no se han podio procesar (se han descartado)
         Registro registro = Registro(RUTA_REGISTRO);
         Registro informe = Registro(RUTA_INFORME);
 
         int count_vector_tipo_evento(std::vector<Evento> lista,int tipo);
+        int count_vector_origen_evento(std::vector<Evento> lista, int origen);
+        int count_vector_relacion_maquina(std::vector<Evento> lista, Maquina maquina);
 
     public:
 
@@ -45,10 +47,6 @@ class Resultado {
         void almacenar_iteracion(bool evento_procesado, Evento evento);
         void almacenar_final(ColaEventos lista_eventos);
         void procesar();
-
-        //TODO saber por que el evento no se ha podido procesar
-        //TODO saber si la simulacion a terminado con todos los eventos en el tiempo establecido
-        //TODO saber que eventos ha dejado sin procesar por tiempo
 
 };
 

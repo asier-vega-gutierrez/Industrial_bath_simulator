@@ -56,6 +56,10 @@ void Resultado::procesar(){
     // INFORMACION SOBRE LA SIMULACION
     informe.escribir("\nINFORMACION SOBRE LA SIMULACION: \n");
 
+    // El timepo de simulacion
+    msg = "El tiempo de simulacion es de: " + std::to_string(this->tiempo_simulacion) + " minutos \n";
+    informe.escribir(msg);
+
     // Las semillas utilizadas para cada entrada
     msg = "";
     for(const Entrada& entrada : this->lista_entradas){
@@ -75,20 +79,20 @@ void Resultado::procesar(){
     msg = "";
     msg += "Cantidad de eventos EXTERNOs procesados: " + std::to_string(count_eventos_ext - count_eventos_finales_ext - count_eventos_sinprocesar_ext) + "\n";
     msg += "Cantidad de eventos EXTERNOs sin procesar: " + std::to_string(count_eventos_sinprocesar_ext) + "\n";
-    msg += "Eventos EXTERNOs sin procesar: " + std::to_string(eesp * 100.0) + "\n";
-    msg += "Eventos EXTERNOs procesados: " + std::to_string((1-eesp) * 100.0) + "\n";
+    msg += "Eventos EXTERNOs sin procesar: " + std::to_string(eesp * 100.0) + " %\n";
+    msg += "Eventos EXTERNOs procesados: " + std::to_string((1-eesp) * 100.0) + " %\n";
     informe.escribir(msg);
 
     int count_eventos_int = count_vector_tipo_evento(eventos_lista_completa, INTERNO);
     int count_eventos_finales_int = count_vector_tipo_evento(eventos_finales, INTERNO);
     int count_eventos_sinprocesar_int = count_vector_tipo_evento(eventos_sinprocesar, INTERNO);
-    // Porcentaje de los eventos INTERNOS procesados y no (TODO que pasa con los de tipo 3 ????)
+    // Porcentaje de los eventos INTERNOS procesados y no 
     double eisp = (double)count_eventos_sinprocesar_int / (count_eventos_int - count_eventos_finales_int);
     msg = "";
     msg += "Cantidad de eventos INTERNOs procesados: " + std::to_string(count_eventos_int - count_eventos_finales_int - count_eventos_sinprocesar_int) + "\n";
     msg += "Cantidad de eventos INTERNOs sin procesar: " + std::to_string(count_eventos_sinprocesar_int) + "\n";
-    msg += "Eventos INTERNOs sin procesar: " + std::to_string(eisp * 100.0) + "\n";
-    msg += "Eventos INTERNOs procesados: " + std::to_string((1-eisp) * 100.0) + "\n";
+    msg += "Eventos INTERNOs sin procesar: " + std::to_string(eisp * 100.0) + " %\n";
+    msg += "Eventos INTERNOs procesados: " + std::to_string((1-eisp) * 100.0) + " %\n";
     informe.escribir(msg);
 
     // INFORMACION SOBRE LAS MAQUINAS
@@ -103,16 +107,22 @@ void Resultado::procesar(){
     }
     informe.escribir(msg);
 
-    // Maximo y minimo historico de la cola
+    // Maximo historico de la colas de cada maquina
+    // Eventos que se descartan por cola llena si es que los hay
     msg = "";
     for(const Maquina& maquina : lista_maquinas_sortid){
         // for(const Cola& cola : maquina.get_colas()){
         for(size_t i = 0; i < maquina.get_colas().size(); i++){
             msg += "Cantidad de eventos maxima de la maquina " + std::to_string(maquina.get_id()) + " para su cola de relacion " + std::to_string(maquina.get_relaciones()[i]) + " es de: " + std::to_string(maquina.get_colas()[i].get_max_historico()) + " \n";
-            msg += "Cantidad de eventos minima de la maquina " + std::to_string(maquina.get_id()) + " para su cola de relacion " + std::to_string(maquina.get_relaciones()[i]) + " es de: " + std::to_string(maquina.get_colas()[i].get_min_historico()) + " \n";      
+            // Si el maximo historico es igual al maximo de la cola, peude que se halla desbordado
+            if(maquina.get_colas()[i].get_max_historico() == maquina.get_colas()[i].get_max_cola()){
+                msg += "> Cantidad de eventos descartado por cola llena es de: " + std::to_string(count_vector_relacion_maquina(this->eventos_sinprocesar, maquina)) + " \n";
+            }
         }
+
     }
     informe.escribir(msg);
+
 
     // INFORMACION SOBRE LA SALIDA
     informe.escribir("\nINFORMACION SOBRE LA SALIDA: \n");
@@ -121,7 +131,7 @@ void Resultado::procesar(){
     msg = "";
     for(const Salida& salida : this->lista_salidas){
         if (salida.get_count_eventos() != 0){
-            msg += "Cantidad de eventos de la salida " + std::to_string(salida.get_id()) + " es " + std::to_string(salida.get_count_eventos()) + " son: \n";
+            msg += "Cantidad de eventos de la salida " + std::to_string(salida.get_id()) + " en " + std::to_string(this->tiempo_simulacion) + " minutos, es de " + std::to_string(salida.get_count_eventos()) + " son: \n";
             for(Evento ev : salida.get_eventos()){
                 msg += "> origen: " + std::to_string(ev.get_origen()) + " tipo: " + std::to_string(ev.get_tipo()) + " tiempo: " + std::to_string(ev.get_tiempo()) + "\n";
             }
@@ -129,14 +139,38 @@ void Resultado::procesar(){
     }
     informe.escribir(msg);
 
-
 }
 
-int Resultado::count_vector_tipo_evento(std::vector<Evento> lista,int tipo){
+// Cuenta los eventos de una lista segun el tipo
+int Resultado::count_vector_tipo_evento(std::vector<Evento> lista, int tipo){
     int count = 0;
     for (Evento evento : lista){
         if(evento.get_tipo() == tipo){
             count += 1;
+        }
+    }
+    return count;
+}
+
+// Cuenta los eventos de una lista segun el orgien
+int Resultado::count_vector_origen_evento(std::vector<Evento> lista, int origen){
+    int count = 0;
+    for (Evento evento : lista){
+        if(evento.get_origen() == origen){
+            count += 1;
+        }
+    }
+    return count;
+}
+
+// Cuenta los eventos de una lista que coincidan con las relaciones de una maquina
+int Resultado::count_vector_relacion_maquina(std::vector<Evento> lista, Maquina maquina){
+    int count = 0;
+    for(Evento evento : lista){
+        for(int relacion : maquina.get_relaciones()){
+            if(evento.get_origen() == relacion){
+                count += 1;
+            }
         }
     }
     return count;
