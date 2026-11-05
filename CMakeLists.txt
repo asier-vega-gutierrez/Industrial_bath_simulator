@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(main CXX) #TODO cambiar el nombre de proyecto
+project(main CXX)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -26,7 +26,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(yaml-cpp)
 
 # 2. Gather C++ source files
-file(GLOB_RECURSE SRCS  # TODO cambiar a los .cpp tal cual no a todos
+file(GLOB_RECURSE SRCS
     "./src/*.cpp"
 )
 
