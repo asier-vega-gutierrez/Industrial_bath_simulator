@@ -6,7 +6,7 @@ jobs:
 
   build:
 
-    name: Compilar
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -15,8 +15,6 @@ jobs:
       - name: Clone private repository
         run: |
           git clone https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git my-project
-          
-          # Navigate into it and verify
           cd my-project
           git status
 
@@ -28,12 +26,15 @@ jobs:
 
       # Configura CMake
       - name: Configurar CMake
-        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+        run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=Release
 
       # Compilar proyecto
       - name: Compilar proyecto
-        run: cmake --build build --config Release
-        
+        run: |
+          cd my-project
+          cmake --build build --config Release
+
       # #
       # - name: Subir binario compilado como artefacto
       #   uses: actions/upload-artifact@v4
@@ -41,7 +42,19 @@ jobs:
       #     name: Ejecutable
       #     path: build/main
 
+      
+
 
   # test:
+
+  #     name: Build
+  #     runs-on: ubuntu-latest
+
+  #     steps:
+  #       - name: Ejecutar una vez
+  #         run: |
+  #           cd my-project
+  #           cd bin
+  #           ./main ../config/config.yaml
 
   # release:
