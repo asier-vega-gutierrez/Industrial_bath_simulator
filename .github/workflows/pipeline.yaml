@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Primero clonar el repositorio a la imagen, la ruta de trabajo es $GITHUB_WORKSPACE
+
+      # Clonar el repositorio a la imagen, la ruta de trabajo es $GITHUB_WORKSPACE
       - name: Clone private repository
         run: |
           git clone https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git my-project
@@ -19,18 +20,20 @@ jobs:
           cd my-project
           git status
 
-      # Segundo instalar la herraientas para compilar
+      # Instalar la herraientas para compilar
       - name: Instalar herramientas
         run: |
           sudo apt-get update
           sudo apt install -y cmake build-essential
-          
-      # #
-      # - name: Configurar CMake
-      #   run: cmake -B build -DCMAKE_BUILD_TYPE=Release
-      # #
-      # - name: Compilar proyecto
-      #   run: cmake --build build --config Release
+
+      # Configura CMake
+      - name: Configurar CMake
+        run: cmake -B build -DCMAKE_BUILD_TYPE=Release
+
+      # Compilar proyecto
+      - name: Compilar proyecto
+        run: cmake --build build --config Release
+        
       # #
       # - name: Subir binario compilado como artefacto
       #   uses: actions/upload-artifact@v4
