@@ -11,40 +11,29 @@ jobs:
 
     steps:
 
-      # Clonar el repositorio a la imagen, la ruta de trabajo es $GITHUB_WORKSPACE
-      - name: Clone private repository
+      - name: Clonar repositorio privado
         run: |
           git clone https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git my-project
           cd my-project
           git status
 
-      # Instalar la herraientas para compilar
       - name: Instalar herramientas
         run: |
           sudo apt-get update
           sudo apt install -y cmake build-essential
 
-      # Configura CMake
       - name: Configurar CMake
         run: |
           cd my-project
           cmake -B build -S . -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
-      # # Compilar proyecto
-      # - name: Compilar proyecto
-      #   run: |
-      #     cd my-project
-      #     cmake --build build --config Release
-
-      # Compilar makefile
       - name: Compilar makefile
         run: |
           cd my-project
-          mkdir build
+          ls -a
           cd build
           cmake ..
 
-      # Compilar proyecto
       - name: Compilar proyecto
         run: |
           cd my-project
