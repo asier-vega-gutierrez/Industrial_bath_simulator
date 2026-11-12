@@ -25,16 +25,32 @@ jobs:
           sudo apt install -y cmake build-essential
 
       # Configura CMake
-      - name: Configurar CMake
+      # - name: Configurar CMake
+      #   run: |
+      #     cd my-project
+      #     cmake -B build -S . -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+
+      # # Compilar proyecto
+      # - name: Compilar proyecto
+      #   run: |
+      #     cd my-project
+      #     cmake --build build --config Release
+
+      # Compilar makefile
+      - name: Compilar makefile
         run: |
           cd my-project
-          cmake -B build -S . -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+          mkdir build
+          cd build
+          cmake ..
 
       # Compilar proyecto
       - name: Compilar proyecto
         run: |
           cd my-project
-          cmake --build build --config Release
+          cd build
+          make
+
 
       # #
       # - name: Subir binario compilado como artefacto
