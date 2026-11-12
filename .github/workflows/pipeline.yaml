@@ -27,7 +27,7 @@ jobs:
       # Configura CMake
       - name: Configurar CMake
         run: |
-          ls -a
+          cd my-project
           cmake -B build -DCMAKE_BUILD_TYPE=Release
 
       # Compilar proyecto
