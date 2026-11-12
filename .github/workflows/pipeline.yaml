@@ -28,7 +28,6 @@ jobs:
       - name: Configurar CMake
         run: |
           cd my-project
-          cmake -B build -DCMAKE_BUILD_TYPE=Release
           cmake -B build -S . -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
       # Compilar proyecto
