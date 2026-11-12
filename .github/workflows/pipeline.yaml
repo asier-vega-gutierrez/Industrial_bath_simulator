@@ -1,5 +1,5 @@
 name: GitHub Actions Demo
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: Cpp custom pipeline
 on: [push]
 
 jobs:
@@ -19,13 +19,12 @@ jobs:
           cd my-project
           git status
 
-
-
-      # # Segundo instalar la herraientas para compilar
-      # - name: Instalar herramientas
-      #   run: |
-      #     sudo apt-get update
-      #     sudo apt install -y cmake build-essential
+      # Segundo instalar la herraientas para compilar
+      - name: Instalar herramientas
+        run: |
+          sudo apt-get update
+          sudo apt install -y cmake build-essential
+          
       # #
       # - name: Configurar CMake
       #   run: cmake -B build -DCMAKE_BUILD_TYPE=Release
