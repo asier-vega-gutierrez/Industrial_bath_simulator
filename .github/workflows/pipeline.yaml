@@ -22,23 +22,22 @@ jobs:
           sudo apt-get update
           sudo apt install -y cmake build-essential
 
-      - name: Configurar CMake
-        run: |
-          cd my-project
-          cmake -B build -S . -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+      # - name: Configurar CMake
+      #   run: |
+      #     cd my-project
+      #     cmake -B build -S . -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
-      - name: Compilar makefile
-        run: |
-          cd my-project
-          ls -a
-          cd build
-          cmake ..
+      # - name: Compilar makefile
+      #   run: |
+      #     cd my-project
+      #     cd build
+      #     cmake ..
 
       - name: Compilar proyecto
         run: |
           cd my-project
-          cd build
-          make
+          cmake -B build -S . -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+          cmake --build build -j$(nproc)
 
 
       # #
