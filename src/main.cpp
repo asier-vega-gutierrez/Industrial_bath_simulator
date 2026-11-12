@@ -129,8 +129,6 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-// Desde la carpeta build: make && ../bin/main ../config/config.yaml
-
 
 
 
