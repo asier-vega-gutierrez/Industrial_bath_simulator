@@ -1,7 +1,7 @@
 
-#include "maquina.h"
+#include "proceso.h"
 
-bool Maquina::actualizar_estado(Evento evento, ColaEventos& lista_eventos, double tiempo_actual){
+bool Proceso::actualizar_estado(Evento evento, ColaEventos& lista_eventos, double tiempo_actual){
 
     actualizar_tiempos(tiempo_actual);
 
@@ -26,24 +26,24 @@ bool Maquina::actualizar_estado(Evento evento, ColaEventos& lista_eventos, doubl
     if (evento.get_tipo() != INTERRUPCION){
         if (!this->colas[indice].add_event(evento)) {
             // Cola llena, el evento no se puede procesar ni almacenar
-            std::string msg = "--- Cola de maquina " + std::to_string(id) + " llena \n";
+            std::string msg = "--- Cola de proceso " + std::to_string(id) + " llena \n";
             registro.escribir(msg);
             return false;
         } else {
-            std::string msg = "--> Evento anadido a la cola de maquina " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
+            std::string msg = "--> Evento anadido a la cola de proceso " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
             registro.escribir(msg);
         }
     }
 
     // 3. Si la máquina está bloqueada, aquí termina su trabajo (no puede consumir)
     if (tiempo_actual < tiempo_bloqueo) {
-        // Si se almacena una evento en cola y la maquina esta bloquedad, este evento no se va ha procesar en el tiempo en el que llega por lo que:
+        // Si se almacena una evento en cola y la proceso esta bloquedad, este evento no se va ha procesar en el tiempo en el que llega por lo que:
         // se anade un evento tipo interrupcion por cada evento que se anada a la cola en esta situacion
         // este tiene el mismo origen que el evento introducido en la cola
         // esto permite que el sistema actualice en el momento que se desbloque
         lista_eventos.push(Evento(evento.get_origen(), INTERRUPCION, tiempo_actual+this->tiempo));
         if (evento.get_tipo() == INTERRUPCION){
-            std::string msg = "--> Evento anadido de nuevo a la cola de maquina " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
+            std::string msg = "--> Evento anadido de nuevo a la cola de proceso " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
             registro.escribir(msg);
         }
         return true;
@@ -52,14 +52,14 @@ bool Maquina::actualizar_estado(Evento evento, ColaEventos& lista_eventos, doubl
     // 4. Si la máquina NO está bloqueada, procedemos a consumir de las colas solo si el estado está libre
     colas[indice].get_event();
     estados[indice] = true;
-    std::string msg = "--> Evento eliminado de la cola de maquina " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
-    msg += "--> Maquina " + std::to_string(id) + " actualiza su estado\n";
+    std::string msg = "--> Evento eliminado de la cola de proceso " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
+    msg += "--> proceso " + std::to_string(id) + " actualiza su estado\n";
     registro.escribir(msg);
 
     // 5. Solo si todos los estados son True se genera un evento
     bool evento_listo = std::all_of(estados.begin(), estados.end(), [](bool v) { return v; });
     if(evento_listo){
-        std::string msg = "--> Maquina " + std::to_string(id) + " a generado un evento\n";
+        std::string msg = "--> proceso " + std::to_string(id) + " a generado un evento\n";
         registro.escribir(msg);
         lista_eventos.push(Evento(this->id, INTERNO, tiempo_actual+this->tiempo));
         //si genera un evento la maquian se bloquea el tiempo que ejecute
@@ -72,12 +72,12 @@ bool Maquina::actualizar_estado(Evento evento, ColaEventos& lista_eventos, doubl
 
 }
 
-void Maquina::actualizar_tiempos(double tiempo_actual){
+void Proceso::actualizar_tiempos(double tiempo_actual){
     // Acumular el tiempo transcurrido desde la ultima actualización
     if (tiempo_actual > tiempo_ultimo) {
         double delta = tiempo_actual - tiempo_ultimo;
         
-        // Si al inicio del intervalo la maquina estaba bloqueada, parte o todo el tiempo fue de producción
+        // Si al inicio del intervalo la proceso estaba bloqueada, parte o todo el tiempo fue de producción
         if (tiempo_ultimo < tiempo_bloqueo) {
             double fin_produccion = std::min(tiempo_actual, tiempo_bloqueo);
             double prod_delta = fin_produccion - tiempo_ultimo;

@@ -1,7 +1,7 @@
 #include "./const.h"
 #include "./evento/evento.h"
 #include "./generador/generador.h"
-#include "./entidades/maquina.h"
+#include "./entidades/proceso.h"
 #include "./config/config.h"
 #include "./registro/registro.h"
 #include "./resultado/resultado.h"
@@ -12,12 +12,12 @@
 #include <array>
 
 // Se ocupa de llamar a los subprogramas que realizan la simulacion
-void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Entrada>& lista_entradas, std::vector<Maquina>& lista_maquinas, std::vector<Salida>& lista_salidas){
+void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Entrada>& lista_entradas, std::vector<Proceso>& lista_procesos, std::vector<Salida>& lista_salidas){
 
     double tiempo_actual = 0.0;
 
     // Esto alamcena la informacion durante la ejecucion para despues obtener la solucion de la simulacion
-    Resultado resultado = Resultado(tiempo_simulacion, lista_entradas, lista_maquinas, lista_salidas);
+    Resultado resultado = Resultado(tiempo_simulacion, lista_entradas, lista_procesos, lista_salidas);
     resultado.almacenar_inicial(lista_eventos);
 
     // Registro de actividad para monstrar toda la informacion durante la ejecucion
@@ -42,16 +42,16 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<E
         // aqui se procesa el evento hasta que es consumido
         bool evento_procesado = false;
 
-        // Se actualiza el estado de las etidades tipo maquina
-        for (Maquina& maquina : lista_maquinas){
+        // Se actualiza el estado de las etidades tipo proceso
+        for (Proceso& proceso : lista_procesos){
             // Si la máquina procesa el evento, devolvemos true y salimos
-            if (maquina.actualizar_estado(evento_actual, lista_eventos, tiempo_actual)) {
+            if (proceso.actualizar_estado(evento_actual, lista_eventos, tiempo_actual)) {
                 evento_procesado = true;
                 break; // El evento ya fue consumido
             }
         }
 
-        // Si el evento no se a consumido en ninguna maquina el evento peude ser de salida del sistema
+        // Si el evento no se a consumido en ninguna proceso el evento peude ser de salida del sistema
         if (!evento_procesado) {
             // Si el evento es final se deve guardar en su salida correspondiente
             for (Salida& salida : lista_salidas){
@@ -99,7 +99,7 @@ void inicializacion(Config config){
 
     // Cargar la configuracion
     std::vector<Entrada> lista_entradas = config.get_entradas();
-    std::vector<Maquina> lista_maquinas = config.get_maquinas();
+    std::vector<Proceso> lista_procesos = config.get_procesos();
     std::vector<Salida> lista_salidas = config.get_salidas();
     
     // Declaración de la cola de prioridad de eventos
@@ -110,7 +110,7 @@ void inicializacion(Config config){
     }
 
     // El ultimo paso de la inizacion es llamar al monitor para que comience la simulacion
-    monitor(lista_eventos, config.get_tiempo_simulacion(), lista_entradas, lista_maquinas, lista_salidas);
+    monitor(lista_eventos, config.get_tiempo_simulacion(), lista_entradas, lista_procesos, lista_salidas);
 
     
 

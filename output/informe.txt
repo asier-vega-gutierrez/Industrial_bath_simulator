@@ -2,36 +2,36 @@
 
 INFORMACION SOBRE LA SIMULACION: 
 El tiempo de simulacion es de: 60.000000 minutos 
-La semilla de la entrada 0 es 2694954014 
-La semilla de la entrada 1 es 2030077552 
+La semilla de la entrada 0 es 1186786204 
+La semilla de la entrada 1 es 1221551171 
 
 INFORMACION SOBRE LOS EVENTOS: 
 Cantidad de eventos EXTERNOs procesados: 17
-Cantidad de eventos EXTERNOs sin procesar: 39
-Eventos EXTERNOs sin procesar: 69.642857 %
-Eventos EXTERNOs procesados: 30.357143 %
-Cantidad de eventos INTERNOs procesados: 13
+Cantidad de eventos EXTERNOs sin procesar: 35
+Eventos EXTERNOs sin procesar: 67.307692 %
+Eventos EXTERNOs procesados: 32.692308 %
+Cantidad de eventos INTERNOs procesados: 14
 Cantidad de eventos INTERNOs sin procesar: 0
 Eventos INTERNOs sin procesar: 0.000000 %
 Eventos INTERNOs procesados: 100.000000 %
 
-INFORMACION SOBRE LAS MAQUINAS: 
-Eficiencia de la maquina 2 es: 78.392383 % 
-El timepo que ha estado parada la mquina 2 es: 12.284023 minutos 
-Eficiencia de la maquina 3 es: 88.637114 % 
-El timepo que ha estado parada la mquina 3 es: 6.137184 minutos 
-Eficiencia de la maquina 4 es: 20.000000 % 
-El timepo que ha estado parada la mquina 4 es: 47.319453 minutos 
-Cantidad de eventos maxima de la maquina 2 para su cola de relacion 0 es de: 3 
-> Cantidad de eventos descartado por cola llena es de: 26 
-Cantidad de eventos maxima de la maquina 3 para su cola de relacion 1 es de: 3 
-> Cantidad de eventos descartado por cola llena es de: 13 
-Cantidad de eventos maxima de la maquina 4 para su cola de relacion 2 es de: 1 
-Cantidad de eventos maxima de la maquina 4 para su cola de relacion 3 es de: 1 
+INFORMACION SOBRE LAS procesoS: 
+Eficiencia de la proceso 2 es: 84.134851 % 
+El timepo que ha estado parada la mquina 2 es: 8.777093 minutos 
+Eficiencia de la proceso 3 es: 88.088555 % 
+El timepo que ha estado parada la mquina 3 es: 6.241992 minutos 
+Eficiencia de la proceso 4 es: 21.147603 % 
+El timepo que ha estado parada la mquina 4 es: 46.406563 minutos 
+Cantidad de eventos maxima de la proceso 2 para su cola de relacion 0 es de: 3 
+> Cantidad de eventos descartado por cola llena es de: 27 
+Cantidad de eventos maxima de la proceso 3 para su cola de relacion 1 es de: 3 
+> Cantidad de eventos descartado por cola llena es de: 8 
+Cantidad de eventos maxima de la proceso 4 para su cola de relacion 2 es de: 1 
+Cantidad de eventos maxima de la proceso 4 para su cola de relacion 3 es de: 1 
 
 INFORMACION SOBRE LA SALIDA: 
 Cantidad de eventos de la salida 5 en 60.000000 minutos, es de 4 son: 
-> origen: 4 tipo: 2 tiempo: 18.248901
-> origen: 4 tipo: 2 tiempo: 33.897613
-> origen: 4 tipo: 2 tiempo: 43.897613
-> origen: 4 tipo: 2 tiempo: 53.897613
+> origen: 4 tipo: 2 tiempo: 18.337850
+> origen: 4 tipo: 2 tiempo: 28.337850
+> origen: 4 tipo: 2 tiempo: 38.337850
+> origen: 4 tipo: 2 tiempo: 49.753826

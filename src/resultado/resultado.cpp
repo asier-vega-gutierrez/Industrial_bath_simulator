@@ -47,9 +47,9 @@ void Resultado::procesar(){
     informe.print_iniciar_informe();
     std::string msg = "";
 
-    // por comodidad se ordena segun id las maquinas que estan ordenadas por prioridad
-    std::vector<Maquina> lista_maquinas_sortid = this->lista_maquinas;
-    std::sort(lista_maquinas_sortid.begin(), lista_maquinas_sortid.end(), [](const Maquina& a, const Maquina& b) {
+    // por comodidad se ordena segun id las procesos que estan ordenadas por prioridad
+    std::vector<Proceso> lista_procesos_sortid = this->lista_procesos;
+    std::sort(lista_procesos_sortid.begin(), lista_procesos_sortid.end(), [](const Proceso& a, const Proceso& b) {
         return a.get_id() < b.get_id(); 
     });
 
@@ -95,28 +95,28 @@ void Resultado::procesar(){
     msg += "Eventos INTERNOs procesados: " + std::to_string((1-eisp) * 100.0) + " %\n";
     informe.escribir(msg);
 
-    // INFORMACION SOBRE LAS MAQUINAS
-    informe.escribir("\nINFORMACION SOBRE LAS MAQUINAS: \n");
+    // INFORMACION SOBRE LAS procesoS
+    informe.escribir("\nINFORMACION SOBRE LAS procesoS: \n");
 
-    // Eficiencia de las maquina
+    // Eficiencia de las proceso
     msg = "";
-    for(Maquina maquina : lista_maquinas_sortid){ 
-        double em = (maquina.get_tiempo_produciendo()/this->tiempo_simulacion) * 100.0;
-        msg += "Eficiencia de la maquina "+std::to_string(maquina.get_id())+" es: "+std::to_string(em)+" % \n";
-        msg += "El timepo que ha estado parada la mquina " + std::to_string(maquina.get_id()) + " es: " + std::to_string(maquina.get_tiempo_sinproducir()) + " minutos \n";
+    for(Proceso proceso : lista_procesos_sortid){ 
+        double em = (proceso.get_tiempo_produciendo()/this->tiempo_simulacion) * 100.0;
+        msg += "Eficiencia de la proceso "+std::to_string(proceso.get_id())+" es: "+std::to_string(em)+" % \n";
+        msg += "El timepo que ha estado parada la mquina " + std::to_string(proceso.get_id()) + " es: " + std::to_string(proceso.get_tiempo_sinproducir()) + " minutos \n";
     }
     informe.escribir(msg);
 
-    // Maximo historico de la colas de cada maquina
+    // Maximo historico de la colas de cada proceso
     // Eventos que se descartan por cola llena si es que los hay
     msg = "";
-    for(const Maquina& maquina : lista_maquinas_sortid){
-        // for(const Cola& cola : maquina.get_colas()){
-        for(size_t i = 0; i < maquina.get_colas().size(); i++){
-            msg += "Cantidad de eventos maxima de la maquina " + std::to_string(maquina.get_id()) + " para su cola de relacion " + std::to_string(maquina.get_relaciones()[i]) + " es de: " + std::to_string(maquina.get_colas()[i].get_max_historico()) + " \n";
+    for(const Proceso& proceso : lista_procesos_sortid){
+        // for(const Cola& cola : proceso.get_colas()){
+        for(size_t i = 0; i < proceso.get_colas().size(); i++){
+            msg += "Cantidad de eventos maxima de la proceso " + std::to_string(proceso.get_id()) + " para su cola de relacion " + std::to_string(proceso.get_relaciones()[i]) + " es de: " + std::to_string(proceso.get_colas()[i].get_max_historico()) + " \n";
             // Si el maximo historico es igual al maximo de la cola, peude que se halla desbordado
-            if(maquina.get_colas()[i].get_max_historico() == maquina.get_colas()[i].get_max_cola()){
-                msg += "> Cantidad de eventos descartado por cola llena es de: " + std::to_string(count_vector_relacion_maquina(this->eventos_sinprocesar, maquina)) + " \n";
+            if(proceso.get_colas()[i].get_max_historico() == proceso.get_colas()[i].get_max_cola()){
+                msg += "> Cantidad de eventos descartado por cola llena es de: " + std::to_string(count_vector_relacion_proceso(this->eventos_sinprocesar, proceso)) + " \n";
             }
         }
 
@@ -163,11 +163,11 @@ int Resultado::count_vector_origen_evento(std::vector<Evento> lista, int origen)
     return count;
 }
 
-// Cuenta los eventos de una lista que coincidan con las relaciones de una maquina
-int Resultado::count_vector_relacion_maquina(std::vector<Evento> lista, Maquina maquina){
+// Cuenta los eventos de una lista que coincidan con las relaciones de una proceso
+int Resultado::count_vector_relacion_proceso(std::vector<Evento> lista, Proceso proceso){
     int count = 0;
     for(Evento evento : lista){
-        for(int relacion : maquina.get_relaciones()){
+        for(int relacion : proceso.get_relaciones()){
             if(evento.get_origen() == relacion){
                 count += 1;
             }

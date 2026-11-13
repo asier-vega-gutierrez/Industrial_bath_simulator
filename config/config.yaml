@@ -34,21 +34,21 @@ modelo:
       beta: 1
     tiempo_generacion: 60.0
 
-  - tipo: "maquina"
+  - tipo: "proceso"
     id: 2
     relaciones: [0]
     tiempo: 10.0
     prioridad: 1
     cola: [3]
 
-  - tipo: "maquina"
+  - tipo: "proceso"
     id: 3
     relaciones: [1]
     tiempo: 10.0
     prioridad: 2
     cola: [3]
   
-  - tipo: "maquina"
+  - tipo: "proceso"
     id: 4
     relaciones: [2, 3]
     tiempo: 3.0

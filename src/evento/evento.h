@@ -39,7 +39,7 @@ struct CompararTiempo {
 using ColaEventos = std::priority_queue<Evento, std::vector<Evento>, CompararTiempo>;
 
 
-//Cola de eventos para maquinas
+//Cola de eventos para procesos
 class Cola {
     private:
 

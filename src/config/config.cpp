@@ -64,17 +64,17 @@ int Config::get_ditribucion_lote(std::string str){
 }
 
 
-std::vector<Maquina> Config::get_maquinas() {
-    std::vector<Maquina> lista;
+std::vector<Proceso> Config::get_procesos() {
+    std::vector<Proceso> lista;
     const auto& elemento = config["modelo"]["entidades"];
     for (const auto& elm : elemento) {
-        if (elm["tipo"].as<std::string>() == "maquina"){
-            Maquina maq = Maquina(elm["id"].as<int>(), elm["relaciones"].as<std::vector<int>>(), elm["tiempo"].as<double>(), elm["prioridad"].as<int>(), elm["cola"].as<std::vector<int>>());
+        if (elm["tipo"].as<std::string>() == "proceso"){
+            Proceso maq = Proceso(elm["id"].as<int>(), elm["relaciones"].as<std::vector<int>>(), elm["tiempo"].as<double>(), elm["prioridad"].as<int>(), elm["cola"].as<std::vector<int>>());
             lista.push_back(maq);
         }
     }
     // Esta lista deve ir ordenada segun la prioridad (primero los de prioridad 1) que se establece en la configuracion
-    std::sort(lista.begin(), lista.end(), [](const Maquina& a, const Maquina& b) {
+    std::sort(lista.begin(), lista.end(), [](const Proceso& a, const Proceso& b) {
         return a.get_prioridad() < b.get_prioridad(); 
     });
     return lista;

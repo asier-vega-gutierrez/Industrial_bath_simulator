@@ -7,19 +7,19 @@
 #include <algorithm>
 
 
-#ifndef MAQUINA_H
-#define MAQUINA_H
+#ifndef proceso_H
+#define proceso_H
 
-class Maquina: public Entidad {
+class Proceso: public Entidad {
 
     private:
         double tiempo = 0.0;
         double tiempo_bloqueo = 0.0;
         int prioridad = 1;
-        std::vector<int> relaciones = {}; //los origenes de los eventos que desencadenan esta maquina
+        std::vector<int> relaciones = {}; //los origenes de los eventos que desencadenan esta proceso
         std::vector<bool> estados = {}; //indica si el evento de la misma posicion que relaciones ha ocurrido
         std::vector<Cola> colas = {}; //para cada estado hay una cola
-        // Esto vale para actulizar internamente los tiempos de la maquina
+        // Esto vale para actulizar internamente los tiempos de la proceso
         double tiempo_ultimo = 0.0;
         double tiempo_produciendo = 0.0;
         double tiempo_sinproducir = 0.0;
@@ -27,7 +27,7 @@ class Maquina: public Entidad {
 
     public:
 
-        Maquina(int id, std::vector<int> relaciones, double tiempo, int prioridad, std::vector<int> tamano_cola) : Entidad(id){
+        Proceso(int id, std::vector<int> relaciones, double tiempo, int prioridad, std::vector<int> tamano_cola) : Entidad(id){
             this->tiempo = tiempo;
             this->prioridad = prioridad;
             

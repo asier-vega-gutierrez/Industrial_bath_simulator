@@ -1,4 +1,4 @@
-#include "../entidades/maquina.h"
+#include "../entidades/proceso.h"
 #include "../entidades/entrada.h"
 #include "../entidades/salida.h"
 
@@ -29,7 +29,7 @@ class Config {
         }
 
         std::vector<Entrada> get_entradas();
-        std::vector<Maquina> get_maquinas();
+        std::vector<Proceso> get_procesos();
         std::vector<Salida> get_salidas();
 
         double get_tiempo_simulacion();

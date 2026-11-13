@@ -3,7 +3,7 @@
 #include "../registro/registro.h"
 #include "../entidades/entrada.h"
 #include "../entidades/salida.h"
-#include "../entidades/maquina.h"
+#include "../entidades/proceso.h"
 #include "../const.h"
 
 #include <vector>
@@ -20,7 +20,7 @@ class Resultado {
 
         double tiempo_simulacion = 0.0;
         const std::vector<Entrada>& lista_entradas;
-        const std::vector<Maquina>& lista_maquinas;
+        const std::vector<Proceso>& lista_procesos;
         const std::vector<Salida>& lista_salidas;
 
         std::vector<Evento> eventos_lista_completa = {}; //lista completa de todos los eventos que han aparecido
@@ -33,13 +33,13 @@ class Resultado {
 
         int count_vector_tipo_evento(std::vector<Evento> lista,int tipo);
         int count_vector_origen_evento(std::vector<Evento> lista, int origen);
-        int count_vector_relacion_maquina(std::vector<Evento> lista, Maquina maquina);
+        int count_vector_relacion_proceso(std::vector<Evento> lista, Proceso proceso);
 
     public:
 
         //Las entidades llegan solo como referencia de solo lectura
-        Resultado(double tiempo_simulacion, const std::vector<Entrada>& lista_entradas, const std::vector<Maquina>& lista_maquinas, const std::vector<Salida>& lista_salidas) 
-            : lista_entradas(lista_entradas), lista_maquinas(lista_maquinas), lista_salidas(lista_salidas){
+        Resultado(double tiempo_simulacion, const std::vector<Entrada>& lista_entradas, const std::vector<Proceso>& lista_procesos, const std::vector<Salida>& lista_salidas) 
+            : lista_entradas(lista_entradas), lista_procesos(lista_procesos), lista_salidas(lista_salidas){
             this->tiempo_simulacion = tiempo_simulacion;
         }
 
