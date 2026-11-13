@@ -22,21 +22,9 @@ FetchContent_Declare(
   yaml-cpp
   GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
   GIT_TAG master # Can be a tag (yaml-cpp-x.x.x), a commit hash, or a branch name (master)
+  PATCH_COMMAND ${CMAKE_COMMAND} -E env sed -i 's|#include "yaml-cpp/ostream_wrapper.h"|#include <cstdint>\\\n#include "yaml-cpp/ostream_wrapper.h"|g' src/emitterutils.cpp
 )
 FetchContent_MakeAvailable(yaml-cpp)
-
-# Automatic patch for yaml-cpp 0.9.0 missing <cstdint> on strict toolchains
-set(EMITTER_UTILS_PATH "${yaml-cpp_SOURCE_DIR}/src/emitterutils.cpp")
-if(EXISTS "${EMITTER_UTILS_PATH}")
-    file(READ "${EMITTER_UTILS_PATH}" EMITTER_UTILS_CONTENT)
-    if(NOT "${EMITTER_UTILS_CONTENT}" MATCHES "#include <cstdint>")
-        string(REPLACE "#include \"yaml-cpp/ostream_wrapper.h\""
-                       "#include <cstdint>\n#include \"yaml-cpp/ostream_wrapper.h\""
-                       EMITTER_UTILS_CONTENT "${EMITTER_UTILS_CONTENT}")
-        file(WRITE "${EMITTER_UTILS_PATH}" "${EMITTER_UTILS_CONTENT}")
-        message(STATUS "Patched yaml-cpp: Added #include <cstdint> to emitterutils.cpp")
-    endif()
-endif()
 
 # 2. Gather C++ source files
 file(GLOB_RECURSE SRCS
