@@ -33,14 +33,10 @@ if(yaml-cpp_POPULATED)
   if(EXISTS "${EMITTER_UTILS_FILE}")
     file(READ "${EMITTER_UTILS_FILE}" EMITTER_CONTENT)
     if(NOT "${EMITTER_CONTENT}" MATCHES "#include <cstdint>")
-      string(REPLACE 
-        "#include \"yaml-cpp/ostream_wrapper.h\"" 
-        "#include <cstdint>\n#include \"yaml-cpp/ostream_wrapper.h\"" 
-        EMITTER_CONTENT_PATCHED 
-        "${EMITTER_CONTENT}"
-      )
+      # Prepend the missing header at the very top of the file
+      set(EMITTER_CONTENT_PATCHED "#include <cstdint>\n${EMITTER_CONTENT}")
       file(WRITE "${EMITTER_UTILS_FILE}" "${EMITTER_CONTENT_PATCHED}")
-      message(STATUS "Patched yaml-cpp emitterutils.cpp to include <cstdint>")
+      message(STATUS "Successfully injected #include <cstdint> into yaml-cpp emitterutils.cpp")
     endif()
   endif()
 endif()
