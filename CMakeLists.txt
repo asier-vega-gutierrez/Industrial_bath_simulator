@@ -23,29 +23,9 @@ include(FetchContent)
 FetchContent_Declare(
   yaml-cpp
   GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
-  GIT_TAG 0.9.0 # Can be a tag (yaml-cpp-x.x.x), a commit hash, or a branch name (master)
+  GIT_TAG 0.7.0 # Can be a tag (yaml-cpp-x.x.x), a commit hash, or a branch name (master)
 )
-
-# yaml-cpp 0.9.0 assumes the standard integer typedefs are available in
-# emitterutils.cpp. GCC 15 is stricter and requires <cstdint> to be included
-# before the uint16_t/uint32_t typedefs are used. Patch the downloaded source
-# before the target is created so the dependency builds correctly on newer toolchains.
-FetchContent_GetProperties(yaml-cpp)
-if(NOT yaml-cpp_POPULATED)
-    FetchContent_Populate(yaml-cpp)
-endif()
-
-set(EMITTER_UTILS_FILE "${yaml-cpp_SOURCE_DIR}/src/emitterutils.cpp")
-if(EXISTS "${EMITTER_UTILS_FILE}")
-    file(READ "${EMITTER_UTILS_FILE}" EMITTER_CONTENT)
-    if(NOT EMITTER_CONTENT MATCHES "#include <cstdint>")
-        string(PREPEND EMITTER_CONTENT "#include <cstdint>\n")
-        file(WRITE "${EMITTER_UTILS_FILE}" "${EMITTER_CONTENT}")
-        message(STATUS "Patched yaml-cpp emitterutils.cpp with #include <cstdint>")
-    endif()
-endif()
-
-add_subdirectory("${yaml-cpp_SOURCE_DIR}" "${yaml-cpp_BINARY_DIR}")
+FetchContent_MakeAvailable(yaml-cpp)
 
 # 2. Gather C++ source files
 file(GLOB_RECURSE SRCS
