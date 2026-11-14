@@ -27,6 +27,24 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(yaml-cpp)
 
+# WORKAROUND: Patch emitterutils.cpp to fix missing <cstdint> for GCC 15 / modern compilers
+if(yaml-cpp_POPULATED)
+  set(EMITTER_UTILS_FILE "${yaml-cpp_SOURCE_DIR}/src/emitterutils.cpp")
+  if(EXISTS "${EMITTER_UTILS_FILE}")
+    file(READ "${EMITTER_UTILS_FILE}" EMITTER_CONTENT)
+    if(NOT "${EMITTER_CONTENT}" MATCHES "#include <cstdint>")
+      string(REPLACE 
+        "#include \"yaml-cpp/ostream_wrapper.h\"" 
+        "#include <cstdint>\n#include \"yaml-cpp/ostream_wrapper.h\"" 
+        EMITTER_CONTENT_PATCHED 
+        "${EMITTER_CONTENT}"
+      )
+      file(WRITE "${EMITTER_UTILS_FILE}" "${EMITTER_CONTENT_PATCHED}")
+      message(STATUS "Patched yaml-cpp emitterutils.cpp to include <cstdint>")
+    endif()
+  endif()
+endif()
+
 # 2. Gather C++ source files
 file(GLOB_RECURSE SRCS
     "./src/*.cpp"
