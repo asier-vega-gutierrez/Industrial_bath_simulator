@@ -5,6 +5,8 @@ project(main CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_COMPILER_ID "GNU")
+set(CMAKE_CXX_COMPILER_VERSION "13.3.0")
 
 # Add compiler warnings (-Wall -Wextra)
 if(MSVC)
