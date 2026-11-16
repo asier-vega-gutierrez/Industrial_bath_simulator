@@ -14,7 +14,8 @@
 // Se ocupa de llamar a los subprogramas que realizan la simulacion
 void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<Entrada>& lista_entradas, std::vector<Proceso>& lista_procesos, std::vector<Salida>& lista_salidas){
 
-    double tiempo_actual = 0.0;
+    // El primer iontantes el el instantes del primer evento en la cola
+    double tiempo_actual = lista_eventos.top().get_tiempo();
 
     // Esto alamcena la informacion durante la ejecucion para despues obtener la solucion de la simulacion
     Resultado resultado = Resultado(tiempo_simulacion, lista_entradas, lista_procesos, lista_salidas);
@@ -36,7 +37,6 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<E
         // Se recoje el evento superiro de la lsita que es el primero en tiempo que va a ocurrir
         Evento evento_actual = lista_eventos.top();
         lista_eventos.pop(); // se elmina una vez recojido
-        
 
         // RUTINA DE EVENTOS
         // aqui se procesa el evento hasta que es consumido

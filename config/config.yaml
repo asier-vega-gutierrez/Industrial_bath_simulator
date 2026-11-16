@@ -16,8 +16,9 @@ modelo:
       alpha: 5
       beta: 6
     ditribucion_lote:
-      tipo: "POISSON"
-      alpha: 3
+      tipo: "ENTERO"
+      alpha: 1
+      beta: 1
     tiempo_generacion: 60.0
 
   - tipo: "entrada"

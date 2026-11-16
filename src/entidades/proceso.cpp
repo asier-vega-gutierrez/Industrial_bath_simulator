@@ -41,7 +41,7 @@ bool Proceso::actualizar_estado(Evento evento, ColaEventos& lista_eventos, doubl
         // se anade un evento tipo interrupcion por cada evento que se anada a la cola en esta situacion
         // este tiene el mismo origen que el evento introducido en la cola
         // esto permite que el sistema actualice en el momento que se desbloque
-        lista_eventos.push(Evento(evento.get_origen(), INTERRUPCION, tiempo_actual+this->tiempo));
+        lista_eventos.push(Evento(evento.get_origen(), INTERRUPCION, tiempo_bloqueo));
         if (evento.get_tipo() == INTERRUPCION){
             std::string msg = "--> Evento anadido de nuevo a la cola de proceso " + std::to_string(this->id) + ", cola con " + std::to_string(this->colas[indice].get_count_cola_actual()) + " eventos \n";
             registro.escribir(msg);
