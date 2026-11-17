@@ -20,7 +20,7 @@ jobs:
       - name: Instalar herramientas
         run: |
           sudo apt-get update
-          sudo apt install libyaml-cpp-dev
+          sudo apt install libyaml-cpp-dev=0.8.0
           sudo apt install -y cmake build-essential
 
       # - name: Configurar CMake
