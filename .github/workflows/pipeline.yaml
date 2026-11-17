@@ -23,14 +23,10 @@ jobs:
           sudo apt install libyaml-cpp-dev
           sudo apt install -y cmake build-essential
 
-      # - name: Configurar CMake
-      #   run: |
-      #     cd my-project
-      #     cmake -B build -S . -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-
       - name: Compilar proyecto
         run: |
           cd my-project
+          rm -rf build CMakeCache.txt CMakeFiles _deps
           mkdir build
           cd build
           cmake .. -DCMAKE_POLICY_VERSION_MINIMUM=3.5
