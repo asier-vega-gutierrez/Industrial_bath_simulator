@@ -38,8 +38,10 @@ jobs:
         run: |
           cd my-project
           rm -rf build
-          cmake -B build -S . -DCMAKE_POLICY_VERSION_MINIMUM=3.5
-          cmake --build build -j$(nproc)
+          mkdir build
+          cd build
+          cmake ..
+          make
 
 
       # #
