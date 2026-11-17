@@ -20,8 +20,16 @@ jobs:
       - name: Instalar herramientas
         run: |
           sudo apt-get update
-          sudo apt install libyaml-cpp-dev
           sudo apt install -y cmake build-essential
+          
+      - name: Descargar yaml-cpp manualmente (Workaround)
+        run: |
+          cd my-project
+          mkdir -p third_party
+          curl -L https://github.com/jbeder/yaml-cpp/archive/refs/tags/0.8.0.tar.gz -o yaml-cpp.tar.gz
+          tar -xzf yaml-cpp.tar.gz -C third_party/
+          mv third_party/yaml-cpp-0.8.0 third_party/yaml-cpp
+          rm yaml-cpp.tar.gz
 
       - name: Compilar proyecto
         run: |

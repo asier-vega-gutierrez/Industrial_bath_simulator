@@ -11,9 +11,11 @@ else()
     add_compile_options(-Wall -Wextra)
 endif()
 
-# Strictly require system yaml-cpp. If apt package isn't found, CMake will error out 
-# immediately instead of falling back to downloading code.
-find_package(yaml-cpp REQUIRED)
+# Workaround: Include yaml-cpp directly from local source directory
+set(YAML_CPP_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(YAML_CPP_BUILD_TOOLS OFF CACHE BOOL "" FORCE)
+set(YAML_CPP_BUILD_CONTRIB OFF CACHE BOOL "" FORCE)
+add_subdirectory(third_party/yaml-cpp)
 
 file(GLOB_RECURSE SRCS
     "./src/*.cpp"
