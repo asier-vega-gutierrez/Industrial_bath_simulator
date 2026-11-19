@@ -95,8 +95,8 @@ void Resultado::procesar(){
     msg += "Eventos INTERNOs procesados: " + std::to_string((1-eisp) * 100.0) + " %\n";
     informe.escribir(msg);
 
-    // INFORMACION SOBRE LAS procesoS
-    informe.escribir("\nINFORMACION SOBRE LAS procesoS: \n");
+    // INFORMACION SOBRE LOS PROCESOS
+    informe.escribir("\nINFORMACION SOBRE LOS PROCESOS: \n");
 
     // Eficiencia de las proceso
     msg = "";

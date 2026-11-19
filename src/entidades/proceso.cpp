@@ -1,9 +1,9 @@
 
 #include "proceso.h"
 
-bool Proceso::actualizar_estado(Evento evento, ColaEventos& lista_eventos, double tiempo_actual){
+bool Proceso::actualizar_estado(Evento evento, ColaEventos& lista_eventos){
 
-    actualizar_tiempos(tiempo_actual);
+    actualizar_tiempos(evento.get_tiempo());
 
     // Rutina de gestion de eventos
 
@@ -36,7 +36,7 @@ bool Proceso::actualizar_estado(Evento evento, ColaEventos& lista_eventos, doubl
     }
 
     // 3. Si la máquina está bloqueada, aquí termina su trabajo (no puede consumir)
-    if (tiempo_actual < tiempo_bloqueo) {
+    if (evento.get_tiempo() < tiempo_bloqueo) {
         // Si se almacena una evento en cola y la proceso esta bloquedad, este evento no se va ha procesar en el tiempo en el que llega por lo que:
         // se anade un evento tipo interrupcion por cada evento que se anada a la cola en esta situacion
         // este tiene el mismo origen que el evento introducido en la cola
@@ -61,9 +61,9 @@ bool Proceso::actualizar_estado(Evento evento, ColaEventos& lista_eventos, doubl
     if(evento_listo){
         std::string msg = "--> proceso " + std::to_string(id) + " a generado un evento\n";
         registro.escribir(msg);
-        lista_eventos.push(Evento(this->id, INTERNO, tiempo_actual+this->tiempo));
+        lista_eventos.push(Evento(this->id, INTERNO, evento.get_tiempo() + this->tiempo));
         //si genera un evento la maquian se bloquea el tiempo que ejecute
-        this->tiempo_bloqueo = tiempo_actual + this->tiempo;
+        this->tiempo_bloqueo = evento.get_tiempo() + this->tiempo;
         std::fill(this->estados.begin(), this->estados.end(), false);
     }
 

@@ -43,7 +43,7 @@ class Proceso: public Entidad {
         // Este get se llama desde un puntero (const &) por lo que el metodo deve prometer (al compilador) que no va a modificar el objeto
         int get_prioridad() const {return this->prioridad;}
         // Llamar para actualizar el estado y generar los eventos
-        bool actualizar_estado(Evento evento, ColaEventos& lista_eventos, double tiempo_actual);
+        bool actualizar_estado(Evento evento, ColaEventos& lista_eventos);
         double get_tiempo_produciendo() const {return this->tiempo_produciendo;}
         double get_tiempo_sinproducir() const {return this->tiempo_sinproducir;}
         std::vector<int> get_relaciones() const {return this->relaciones;}

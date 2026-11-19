@@ -45,7 +45,7 @@ void monitor(ColaEventos& lista_eventos, double tiempo_simulacion, std::vector<E
         // Se actualiza el estado de las etidades tipo proceso
         for (Proceso& proceso : lista_procesos){
             // Si la máquina procesa el evento, devolvemos true y salimos
-            if (proceso.actualizar_estado(evento_actual, lista_eventos, tiempo_actual)) {
+            if (proceso.actualizar_estado(evento_actual, lista_eventos)) {
                 evento_procesado = true;
                 break; // El evento ya fue consumido
             }
